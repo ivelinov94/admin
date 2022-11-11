@@ -12,9 +12,9 @@ class Hash {
 		}
 	}
 
-    static async createPassword(password: string): Promise<string> {
-        return bcrypt.hash(password, SALT_ROUND);
-    }
+	static async createPassword(password: string): Promise<string> {
+		return bcrypt.hash(password, SALT_ROUND);
+	}
 }
 
 

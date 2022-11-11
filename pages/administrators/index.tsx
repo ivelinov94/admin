@@ -81,8 +81,7 @@ const getProps = async (context: GetServerSidePropsContext, store: AppStore) => 
 		}
 	}
 
-
-	const data = await fetchJson<{ data: User[] }>("http://localhost:3000/api/administrators/list", {
+	const data = await fetchJson<{ data: User[] }>("http://localhost:3000/api/administrators", {
 		method: "GET",
 		headers: { "Content-Type": "application/json" },
 	});
