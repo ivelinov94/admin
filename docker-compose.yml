@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  admin_panel:
+    build: ./admin-panel/
+    image: ghcr.io/soldibox-ltd/backend-admin_panel:latest
+    container_name: admin_panel
+    ports:
+      - "3999:3000"
+    depends_on:
+      - admin_panel_db
+    environment:
+      - PORT=3000
+      - DATABASE_URL=postgresql://postgres:postgres@admin_panel_db/postgres
+  admin_panel_db:
+    container_name: admin_panel_db
+    build: ./db/
+    image: ghcr.io/soldibox-ltd/backend-admin_panel_db:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5429:5432'
+    volumes:
+      - ./admin-panel/prisma/db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local
