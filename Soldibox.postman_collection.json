@@ -1,0 +1,3437 @@
+{
+	"info": {
+		"_postman_id": "5b44a91a-eb67-4814-a2b8-c669b377a12e",
+		"name": "Soldibox",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Localhost",
+			"item": [
+				{
+					"name": "LegalsAPI",
+					"item": [
+						{
+							"name": "getLegals",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"deviceId\": \"12345\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/v1/legal/legals",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"legal",
+										"legals"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getLegal by type",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4202/legal/Terms",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4202",
+									"path": [
+										"legal",
+										"Terms"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CryptoAPI",
+					"item": [
+						{
+							"name": "generate",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"deviceId\": \"12345\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/v1/crypto/generate/keys",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"crypto",
+										"generate",
+										"keys"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getLegal by type",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4202/legal/Terms",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4202",
+									"path": [
+										"legal",
+										"Terms"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getLegals GQL",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\r\n    getLegals {\r\n        type\r\n        body\r\n    }\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000"
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getLegal GQL",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\r\n    getLegal(input: { type: \"Terms\"}) {\r\n        type\r\n        body\r\n    }\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000"
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Payment API",
+					"item": [
+						{
+							"name": "transactions",
+							"item": [
+								{
+									"name": "CreateTransaction",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"amount\": 2500.25,\n    \"sourceId\": \"1\",\n    \"sourceType\": \"creditCard\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4205/payments/transactions",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4205",
+											"path": [
+												"payments",
+												"transactions"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "create payment method",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"title\": \"Hope3\",\n    \"number\": \"123123131\",\n    \"expMonth\": \"8\",\n    \"expYear\": \"2025\",\n    \"cvc\": \"922\",\n    \"holder\": \"Ivan velinov\",\n\t\"directCharge\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/v1/payments/methods",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"payments",
+										"methods"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update payment method",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"title\": \"HopeDown\",\n\t\"expMonth\": \"12\",\n\t\"expYear\": \"2023\",\n\t\"cvc\": \"900\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/v1/payments/methods/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"payments",
+										"methods",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Set default payment method",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/v1/payments/methods/1/default",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"payments",
+										"methods",
+										"1",
+										"default"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get payment methods",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "sAccessToken=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsInZlcnNpb24iOiIyIn0%3D.eyJzZXNzaW9uSGFuZGxlIjoiMWQzMTFjODEtZTIzNy00MDJhLTgxZTItNzBkMmUwZTJhNGM0IiwidXNlcklkIjoiMzE5NWQxOTQtZTcwMy00MjY2LTgzMDctMTQ5NGZkY2M5MzZiIiwicmVmcmVzaFRva2VuSGFzaDEiOiJiMWU4NTUwNGFhYzUxZWNmMGMzMDllNGMzZDRhZGE2MGEwYzIxMzEwMWZkY2UxODcyYTAxMmU5ODM0OTE4YjIwIiwidXNlckRhdGEiOnt9LCJleHBpcnlUaW1lIjoxNjYzNjU0ODAyNTA0LCJ0aW1lQ3JlYXRlZCI6MTY2MzY1MTIwMjUwNCwibG1ydCI6MTY2MzY1MTIwMjUwNH0%3D.UU4eoj%2FeGAiJzH%2FYCpzZD%2B6lC8kbFdDaHTOD5ekubtqrNqBgD%2BEObb%2FV1KX73w3J6j%2BW78EnK97Cfr0QqDgv7ybL4aE00YAb5NrSGeAVD76q80pRm2OK%2BTb3gsrnOqHC%2BAGp4aZh3PeC%2B3AFbJ1NK54mC3dFDtNviKruKkMGor8UOspcnqyvkmU5%2BdACFfGQHP%2FpoJHcqVLLJeDOk25Nv9SIwxna0PHuYBaY%2F5C1nqLWLMXORLdlraC7rrVUSashhijFOAHz%2BHIQfTyErlduDcQOswTX4nAj1ogdnRHuIXANyYY4r6A7skPALdnkfI6x3ZLCrH9Eg6IywHUn7zfh%2FQ%3D%3D sIdRefreshToken=1b822d30-1b45-42d3-81e6-86f61988382c",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost:4000/api/v1/payments/methods",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"payments",
+										"methods"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete method",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Cookie",
+										"type": "text",
+										"value": "sAccessToken=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsInZlcnNpb24iOiIyIn0%3D.eyJzZXNzaW9uSGFuZGxlIjoiMWQzMTFjODEtZTIzNy00MDJhLTgxZTItNzBkMmUwZTJhNGM0IiwidXNlcklkIjoiMzE5NWQxOTQtZTcwMy00MjY2LTgzMDctMTQ5NGZkY2M5MzZiIiwicmVmcmVzaFRva2VuSGFzaDEiOiJiMWU4NTUwNGFhYzUxZWNmMGMzMDllNGMzZDRhZGE2MGEwYzIxMzEwMWZkY2UxODcyYTAxMmU5ODM0OTE4YjIwIiwidXNlckRhdGEiOnt9LCJleHBpcnlUaW1lIjoxNjYzNjU0ODAyNTA0LCJ0aW1lQ3JlYXRlZCI6MTY2MzY1MTIwMjUwNCwibG1ydCI6MTY2MzY1MTIwMjUwNH0%3D.UU4eoj%2FeGAiJzH%2FYCpzZD%2B6lC8kbFdDaHTOD5ekubtqrNqBgD%2BEObb%2FV1KX73w3J6j%2BW78EnK97Cfr0QqDgv7ybL4aE00YAb5NrSGeAVD76q80pRm2OK%2BTb3gsrnOqHC%2BAGp4aZh3PeC%2B3AFbJ1NK54mC3dFDtNviKruKkMGor8UOspcnqyvkmU5%2BdACFfGQHP%2FpoJHcqVLLJeDOk25Nv9SIwxna0PHuYBaY%2F5C1nqLWLMXORLdlraC7rrVUSashhijFOAHz%2BHIQfTyErlduDcQOswTX4nAj1ogdnRHuIXANyYY4r6A7skPALdnkfI6x3ZLCrH9Eg6IywHUn7zfh%2FQ%3D%3D sIdRefreshToken=1b822d30-1b45-42d3-81e6-86f61988382c",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost:4000/api/v1/payments/methods/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"payments",
+										"methods",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Virtual Card",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Ivan Velinov\",\r\n    \"address\": {\r\n        \"street\": \"sttt\",\r\n        \"city\": \"Sofia\",\r\n        \"postal_code\": \"1000\",\r\n        \"country\": \"BG\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4205/payments/cards",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4205",
+									"path": [
+										"payments",
+										"cards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Virtual Cards",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}:4205/payments/cards",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "4205",
+									"path": [
+										"payments",
+										"cards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Virtual Card by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/payments/cards/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments",
+										"cards",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Virtual Card",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/payments/cards/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments",
+										"cards",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Auth API",
+					"item": [
+						{
+							"name": "Registrate",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Digest",
+										"value": "PYQn+Mn3ueNc5NmYK6vUCqDwe4dTTdVv7cnt5NBqQj69xCEx/cUDxdVP4O6vDJ8c2PpRH5Rs84LL9B2Rm9Mr0tyCmRnUDcNDDlgCKgl1WVv8kL+G41UzqTpTAP+pCzjOG32zanVnxg/6HoHHdnUugNVV9oV7v6Yp+8iiJnWblbKLq9xmbHBpl4HHQ/qxGfChjLr5zpoKqT/5ltAjk802bZv99SwUJX/U4COeA6AbDRU+btytw84C4NnRETk6wHhFbzrQvTlaS2v/hwVVG0GOoQFRyQ4ZFB1FHxogOhcfi+wgB+8WwuMddWJ3X+ZJwku4i0GcqV1N9kx5pREszKRkkg==",
+										"type": "text"
+									},
+									{
+										"key": "Signature",
+										"value": "hOkZ8pleCNIr7goyUzPo9HNVzZ9oeN3MHmjbkBJR1mP0lkp4/Bo/kh6Ce4SqG8sCOzrCBMsuyJHFeiUdJ8l4jbcwRxE4y/mqrE71XuvMGi4J7KuIkwFOAeGorZi8VQAhDkyrRd6EDqWFcvgmil224DMGw/TZ7qRswmvVZLOvA6KIhlMk0S4+V8/xrkZNLiZ4uhDHfG6GmcBcRDDtjbZ88WsbbeHt4Qc/wx9CjDLuPqiPA9kwnbTqkBNjbT3m3XPp6jIteKm8/ri31C9DDl9Pil4CfmDwIAQj+sigb0iPAlX99n14HmzL9FQPHmFSozTiPjtb922cCvULRhR7/cnbcQ==",
+										"type": "text"
+									},
+									{
+										"key": "Signature-input",
+										"value": "(host digest);created=1654275609571;keyid=${{keyId}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phoneNumber\": \"+359898643628\",\r\n\t\"deviceId\": \"1234\",\r\n\t\"usageType\": \"signup\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/v1/auth/signinup/signup/code",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signinup",
+										"signup",
+										"code"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Something is wrong",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Gives all documents and types",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  },\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Digest",
+										"value": "PYQn+Mn3ueNc5NmYK6vUCqDwe4dTTdVv7cnt5NBqQj69xCEx/cUDxdVP4O6vDJ8c2PpRH5Rs84LL9B2Rm9Mr0tyCmRnUDcNDDlgCKgl1WVv8kL+G41UzqTpTAP+pCzjOG32zanVnxg/6HoHHdnUugNVV9oV7v6Yp+8iiJnWblbKLq9xmbHBpl4HHQ/qxGfChjLr5zpoKqT/5ltAjk802bZv99SwUJX/U4COeA6AbDRU+btytw84C4NnRETk6wHhFbzrQvTlaS2v/hwVVG0GOoQFRyQ4ZFB1FHxogOhcfi+wgB+8WwuMddWJ3X+ZJwku4i0GcqV1N9kx5pREszKRkkg==",
+										"type": "text"
+									},
+									{
+										"key": "Signature",
+										"value": "hOkZ8pleCNIr7goyUzPo9HNVzZ9oeN3MHmjbkBJR1mP0lkp4/Bo/kh6Ce4SqG8sCOzrCBMsuyJHFeiUdJ8l4jbcwRxE4y/mqrE71XuvMGi4J7KuIkwFOAeGorZi8VQAhDkyrRd6EDqWFcvgmil224DMGw/TZ7qRswmvVZLOvA6KIhlMk0S4+V8/xrkZNLiZ4uhDHfG6GmcBcRDDtjbZ88WsbbeHt4Qc/wx9CjDLuPqiPA9kwnbTqkBNjbT3m3XPp6jIteKm8/ri31C9DDl9Pil4CfmDwIAQj+sigb0iPAlX99n14HmzL9FQPHmFSozTiPjtb922cCvULRhR7/cnbcQ==",
+										"type": "text"
+									},
+									{
+										"key": "Signature-input",
+										"value": "(host digest);created=1654275609571;keyid={{keyId}};",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phoneNumber\": \"+359898643629\",\r\n\t\"deviceId\": \"12345\",\r\n\t\"usageType\": \"signin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/v1/auth/signinup/signin/code",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signinup",
+										"signin",
+										"code"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Gives all documents and types",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  },\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  }\n]"
+								},
+								{
+									"name": "Something is wrong",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Auth with Codes Resend",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Digest",
+										"value": "PYQn+Mn3ueNc5NmYK6vUCqDwe4dTTdVv7cnt5NBqQj69xCEx/cUDxdVP4O6vDJ8c2PpRH5Rs84LL9B2Rm9Mr0tyCmRnUDcNDDlgCKgl1WVv8kL+G41UzqTpTAP+pCzjOG32zanVnxg/6HoHHdnUugNVV9oV7v6Yp+8iiJnWblbKLq9xmbHBpl4HHQ/qxGfChjLr5zpoKqT/5ltAjk802bZv99SwUJX/U4COeA6AbDRU+btytw84C4NnRETk6wHhFbzrQvTlaS2v/hwVVG0GOoQFRyQ4ZFB1FHxogOhcfi+wgB+8WwuMddWJ3X+ZJwku4i0GcqV1N9kx5pREszKRkkg==",
+										"type": "text"
+									},
+									{
+										"key": "Signature",
+										"value": "hOkZ8pleCNIr7goyUzPo9HNVzZ9oeN3MHmjbkBJR1mP0lkp4/Bo/kh6Ce4SqG8sCOzrCBMsuyJHFeiUdJ8l4jbcwRxE4y/mqrE71XuvMGi4J7KuIkwFOAeGorZi8VQAhDkyrRd6EDqWFcvgmil224DMGw/TZ7qRswmvVZLOvA6KIhlMk0S4+V8/xrkZNLiZ4uhDHfG6GmcBcRDDtjbZ88WsbbeHt4Qc/wx9CjDLuPqiPA9kwnbTqkBNjbT3m3XPp6jIteKm8/ri31C9DDl9Pil4CfmDwIAQj+sigb0iPAlX99n14HmzL9FQPHmFSozTiPjtb922cCvULRhR7/cnbcQ==",
+										"type": "text"
+									},
+									{
+										"key": "Signature-input",
+										"value": "(host digest);created=1654275609571;keyid=arn:aws:kms:us-east-1:884422010005:key/39732224-6a26-47b9-92bc-1d99a8999ecb;",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phoneNumber\": \"+359898643635\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/v1/auth/signinup/code",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signinup",
+										"code"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Something is wrong",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Gives all documents and types",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  },\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "validateUser with Signature",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Digest",
+										"type": "text",
+										"value": "PYQn+Mn3ueNc5NmYK6vUCqDwe4dTTdVv7cnt5NBqQj69xCEx/cUDxdVP4O6vDJ8c2PpRH5Rs84LL9B2Rm9Mr0tyCmRnUDcNDDlgCKgl1WVv8kL+G41UzqTpTAP+pCzjOG32zanVnxg/6HoHHdnUugNVV9oV7v6Yp+8iiJnWblbKLq9xmbHBpl4HHQ/qxGfChjLr5zpoKqT/5ltAjk802bZv99SwUJX/U4COeA6AbDRU+btytw84C4NnRETk6wHhFbzrQvTlaS2v/hwVVG0GOoQFRyQ4ZFB1FHxogOhcfi+wgB+8WwuMddWJ3X+ZJwku4i0GcqV1N9kx5pREszKRkkg=="
+									},
+									{
+										"key": "Signature",
+										"type": "text",
+										"value": "hOkZ8pleCNIr7goyUzPo9HNVzZ9oeN3MHmjbkBJR1mP0lkp4/Bo/kh6Ce4SqG8sCOzrCBMsuyJHFeiUdJ8l4jbcwRxE4y/mqrE71XuvMGi4J7KuIkwFOAeGorZi8VQAhDkyrRd6EDqWFcvgmil224DMGw/TZ7qRswmvVZLOvA6KIhlMk0S4+V8/xrkZNLiZ4uhDHfG6GmcBcRDDtjbZ88WsbbeHt4Qc/wx9CjDLuPqiPA9kwnbTqkBNjbT3m3XPp6jIteKm8/ri31C9DDl9Pil4CfmDwIAQj+sigb0iPAlX99n14HmzL9FQPHmFSozTiPjtb922cCvULRhR7/cnbcQ=="
+									},
+									{
+										"key": "Signature-input",
+										"type": "text",
+										"value": "(host digest);created=1654275609571;keyid=arn:aws:kms:us-east-1:884422010005:key/39732224-6a26-47b9-92bc-1d99a8999ecb;"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"signature\": \"asdasdsdj12b12jhbjwdbj\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}:4204/auth/acceptLegal",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "4204",
+									"path": [
+										"auth",
+										"acceptLegal"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Something is wrong",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Gives all documents and types",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  },\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "Send Code",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Signature-input",
+										"value": "(host digest);created=1654275609571;keyid={{keyId}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \t\"status\": \"OK\",\n\t\"deviceId\": \"lEufuQX8YApe6H4GjbCMG7CgGqJaC4KLgdF2BJCcfD8=\",\n\t\"flowType\": \"USER_INPUT_CODE\",\n\t\"preAuthSessionId\": \"YmXm0dGUHdZL3CfaYpmnCkh2XmAt4zTtdXZQTVUmLt4=\",\n    \"userInputCode\": \"353220\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/v1/auth/signinup/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signinup",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Something is wrong",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Finish Auth with sms code",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n   \"status\": \"OK\",\n\t\"deviceId\": \"HBMgSo3jeecFyFd77yjadE1f70OKzy/mCIKivrvviBM=\",\n\t\"flowType\": \"USER_INPUT_CODE\",\n\t\"preAuthSessionId\": \"0NlU_WWFBj53nqEovVUQNEetLqBkBK8VG5zSeJZUvrA=\",\n    \"userInputCode\": \"232058\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/api/v1/auth/signinup/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"signinup",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "sAccessToken=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsInZlcnNpb24iOiIyIn0%3D.eyJzZXNzaW9uSGFuZGxlIjoiMWQzMTFjODEtZTIzNy00MDJhLTgxZTItNzBkMmUwZTJhNGM0IiwidXNlcklkIjoiMzE5NWQxOTQtZTcwMy00MjY2LTgzMDctMTQ5NGZkY2M5MzZiIiwicmVmcmVzaFRva2VuSGFzaDEiOiJiMWU4NTUwNGFhYzUxZWNmMGMzMDllNGMzZDRhZGE2MGEwYzIxMzEwMWZkY2UxODcyYTAxMmU5ODM0OTE4YjIwIiwidXNlckRhdGEiOnt9LCJleHBpcnlUaW1lIjoxNjYzNjU0ODAyNTA0LCJ0aW1lQ3JlYXRlZCI6MTY2MzY1MTIwMjUwNCwibG1ydCI6MTY2MzY1MTIwMjUwNH0%3D.UU4eoj%2FeGAiJzH%2FYCpzZD%2B6lC8kbFdDaHTOD5ekubtqrNqBgD%2BEObb%2FV1KX73w3J6j%2BW78EnK97Cfr0QqDgv7ybL4aE00YAb5NrSGeAVD76q80pRm2OK%2BTb3gsrnOqHC%2BAGp4aZh3PeC%2B3AFbJ1NK54mC3dFDtNviKruKkMGor8UOspcnqyvkmU5%2BdACFfGQHP%2FpoJHcqVLLJeDOk25Nv9SIwxna0PHuYBaY%2F5C1nqLWLMXORLdlraC7rrVUSashhijFOAHz%2BHIQfTyErlduDcQOswTX4nAj1ogdnRHuIXANyYY4r6A7skPALdnkfI6x3ZLCrH9Eg6IywHUn7zfh%2FQ%3D%3D; Path=/; Expires=Tue, 20 Sep 2022 06:20:02 GMT; HttpOnly; Secure; SameSite=None"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "sRefreshToken=OJ7AXkPHmZHBp%2FLA%2FGJ3XsXctQrEyh09KZs4j9iyetBqV8Q9u9guKnkbJVaL%2F3CgzWvMP9U7b9aIi2Xd8Z12WLS8VV%2BIC8ysoiQrokzHjv6Gim%2BZV5dlWMoZiFxBAZGH5Yh3XJoRU2qOB%2F7HVdS26uGmCJhpUordHpsQj5FtSsbsYd3PDy2PxFN2uqfEZ%2FuXcaonMBqPvNKoIYx48oSJa8i9mblcOQPKfMHXlNscrhd4AbJwSPcQdCEeyOZewyhusEDkKq1fSr0ijeG38m8z.0bf5dd91e05b94a658685450b4ed864d012342ac3acb1f4629fd57ce7c59e693.V2; Path=/auth/session/refresh; Expires=Thu, 29 Dec 2022 05:20:02 GMT; HttpOnly; Secure; SameSite=None"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "sIdRefreshToken=1b822d30-1b45-42d3-81e6-86f61988382c; Path=/; Expires=Thu, 29 Dec 2022 05:20:02 GMT; HttpOnly; Secure; SameSite=None"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "148"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"94-wCMlPygbVg85Ozwz/R6CQHKL8ik\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 20 Sep 2022 05:20:02 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"OK\",\n    \"createdNewUser\": false,\n    \"user\": {\n        \"phoneNumber\": \"+359898643635\",\n        \"id\": \"3195d194-e703-4266-8307-1494fdcc936b\",\n        \"timeJoined\": 1657460678286\n    }\n}"
+								},
+								{
+									"name": "Gives all documents and types",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  },\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "Refresh",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "sRefreshToken=s0fb9c5CVGHSyRYnSUFIbYaytGaJGO6sHUl4gDHao8evLy%2B1bn16%2BjTyNYRmK%2FVVsSrJ6x6u3X9dvYIb5rIsHQSFj2pXiWmkXSJfXbiajY7EqnbR%2BxYilCZcwvrNwpkE5XYVn8gz8JcPmLPpcIVjNy%2Bd%2BRat4Vj5V%2BenPsMuqiIXDTjoFNlwHcgjDwhS1juiWkIF0XtFlT3sq%2Fd7ieJe7%2FsMrYwQwizW3%2FORsEQJF%2FAId%2FrXQ6VzUy66xjmCaVnhsNhwEDCeW1PF03vA%2B0ou.9616d656134eb36396362d1b6184c80ffa6bfa6013957547c1a17dd139009cfe.V2 ;sIdRefreshToken=6e56e508-7fe4-4674-9d31-5fbff9ea4729",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:4000/api/v1/auth/refresh/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"refresh",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Something is wrong",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Finish Auth with sms code",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n   \"status\": \"OK\",\n\t\"deviceId\": \"HBMgSo3jeecFyFd77yjadE1f70OKzy/mCIKivrvviBM=\",\n\t\"flowType\": \"USER_INPUT_CODE\",\n\t\"preAuthSessionId\": \"0NlU_WWFBj53nqEovVUQNEetLqBkBK8VG5zSeJZUvrA=\",\n    \"userInputCode\": \"232058\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/api/v1/auth/signinup/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"signinup",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "sAccessToken=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsInZlcnNpb24iOiIyIn0%3D.eyJzZXNzaW9uSGFuZGxlIjoiMWQzMTFjODEtZTIzNy00MDJhLTgxZTItNzBkMmUwZTJhNGM0IiwidXNlcklkIjoiMzE5NWQxOTQtZTcwMy00MjY2LTgzMDctMTQ5NGZkY2M5MzZiIiwicmVmcmVzaFRva2VuSGFzaDEiOiJiMWU4NTUwNGFhYzUxZWNmMGMzMDllNGMzZDRhZGE2MGEwYzIxMzEwMWZkY2UxODcyYTAxMmU5ODM0OTE4YjIwIiwidXNlckRhdGEiOnt9LCJleHBpcnlUaW1lIjoxNjYzNjU0ODAyNTA0LCJ0aW1lQ3JlYXRlZCI6MTY2MzY1MTIwMjUwNCwibG1ydCI6MTY2MzY1MTIwMjUwNH0%3D.UU4eoj%2FeGAiJzH%2FYCpzZD%2B6lC8kbFdDaHTOD5ekubtqrNqBgD%2BEObb%2FV1KX73w3J6j%2BW78EnK97Cfr0QqDgv7ybL4aE00YAb5NrSGeAVD76q80pRm2OK%2BTb3gsrnOqHC%2BAGp4aZh3PeC%2B3AFbJ1NK54mC3dFDtNviKruKkMGor8UOspcnqyvkmU5%2BdACFfGQHP%2FpoJHcqVLLJeDOk25Nv9SIwxna0PHuYBaY%2F5C1nqLWLMXORLdlraC7rrVUSashhijFOAHz%2BHIQfTyErlduDcQOswTX4nAj1ogdnRHuIXANyYY4r6A7skPALdnkfI6x3ZLCrH9Eg6IywHUn7zfh%2FQ%3D%3D; Path=/; Expires=Tue, 20 Sep 2022 06:20:02 GMT; HttpOnly; Secure; SameSite=None"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "sRefreshToken=OJ7AXkPHmZHBp%2FLA%2FGJ3XsXctQrEyh09KZs4j9iyetBqV8Q9u9guKnkbJVaL%2F3CgzWvMP9U7b9aIi2Xd8Z12WLS8VV%2BIC8ysoiQrokzHjv6Gim%2BZV5dlWMoZiFxBAZGH5Yh3XJoRU2qOB%2F7HVdS26uGmCJhpUordHpsQj5FtSsbsYd3PDy2PxFN2uqfEZ%2FuXcaonMBqPvNKoIYx48oSJa8i9mblcOQPKfMHXlNscrhd4AbJwSPcQdCEeyOZewyhusEDkKq1fSr0ijeG38m8z.0bf5dd91e05b94a658685450b4ed864d012342ac3acb1f4629fd57ce7c59e693.V2; Path=/auth/session/refresh; Expires=Thu, 29 Dec 2022 05:20:02 GMT; HttpOnly; Secure; SameSite=None"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "sIdRefreshToken=1b822d30-1b45-42d3-81e6-86f61988382c; Path=/; Expires=Thu, 29 Dec 2022 05:20:02 GMT; HttpOnly; Secure; SameSite=None"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "148"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"94-wCMlPygbVg85Ozwz/R6CQHKL8ik\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 20 Sep 2022 05:20:02 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"OK\",\n    \"createdNewUser\": false,\n    \"user\": {\n        \"phoneNumber\": \"+359898643635\",\n        \"id\": \"3195d194-e703-4266-8307-1494fdcc936b\",\n        \"timeJoined\": 1657460678286\n    }\n}"
+								},
+								{
+									"name": "Gives all documents and types",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  },\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "Auth Logout",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \t\"status\": \"OK\",\n\t\"deviceId\": \"LEEjo0D6E5iAYiUGSbcKIaIczwvAbTVCGUdjnPq7gQk=\",\n\t\"flowType\": \"USER_INPUT_CODE\",\n\t\"preAuthSessionId\": \"-9nCYOnC1kZw5VQScp3bYFRofInXnZOlx3Vq_vASO_s=\",\n    \"userInputCode\": \"783955\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/v1/auth/signinup/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signinup",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Gives all documents and types",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  },\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  }\n]"
+								},
+								{
+									"name": "Finish Auth with sms code",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n   \"status\": \"OK\",\n\t\"deviceId\": \"HBMgSo3jeecFyFd77yjadE1f70OKzy/mCIKivrvviBM=\",\n\t\"flowType\": \"USER_INPUT_CODE\",\n\t\"preAuthSessionId\": \"0NlU_WWFBj53nqEovVUQNEetLqBkBK8VG5zSeJZUvrA=\",\n    \"userInputCode\": \"232058\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/api/v1/auth/signinup/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"signinup",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "sAccessToken=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsInZlcnNpb24iOiIyIn0%3D.eyJzZXNzaW9uSGFuZGxlIjoiMWQzMTFjODEtZTIzNy00MDJhLTgxZTItNzBkMmUwZTJhNGM0IiwidXNlcklkIjoiMzE5NWQxOTQtZTcwMy00MjY2LTgzMDctMTQ5NGZkY2M5MzZiIiwicmVmcmVzaFRva2VuSGFzaDEiOiJiMWU4NTUwNGFhYzUxZWNmMGMzMDllNGMzZDRhZGE2MGEwYzIxMzEwMWZkY2UxODcyYTAxMmU5ODM0OTE4YjIwIiwidXNlckRhdGEiOnt9LCJleHBpcnlUaW1lIjoxNjYzNjU0ODAyNTA0LCJ0aW1lQ3JlYXRlZCI6MTY2MzY1MTIwMjUwNCwibG1ydCI6MTY2MzY1MTIwMjUwNH0%3D.UU4eoj%2FeGAiJzH%2FYCpzZD%2B6lC8kbFdDaHTOD5ekubtqrNqBgD%2BEObb%2FV1KX73w3J6j%2BW78EnK97Cfr0QqDgv7ybL4aE00YAb5NrSGeAVD76q80pRm2OK%2BTb3gsrnOqHC%2BAGp4aZh3PeC%2B3AFbJ1NK54mC3dFDtNviKruKkMGor8UOspcnqyvkmU5%2BdACFfGQHP%2FpoJHcqVLLJeDOk25Nv9SIwxna0PHuYBaY%2F5C1nqLWLMXORLdlraC7rrVUSashhijFOAHz%2BHIQfTyErlduDcQOswTX4nAj1ogdnRHuIXANyYY4r6A7skPALdnkfI6x3ZLCrH9Eg6IywHUn7zfh%2FQ%3D%3D; Path=/; Expires=Tue, 20 Sep 2022 06:20:02 GMT; HttpOnly; Secure; SameSite=None"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "sRefreshToken=OJ7AXkPHmZHBp%2FLA%2FGJ3XsXctQrEyh09KZs4j9iyetBqV8Q9u9guKnkbJVaL%2F3CgzWvMP9U7b9aIi2Xd8Z12WLS8VV%2BIC8ysoiQrokzHjv6Gim%2BZV5dlWMoZiFxBAZGH5Yh3XJoRU2qOB%2F7HVdS26uGmCJhpUordHpsQj5FtSsbsYd3PDy2PxFN2uqfEZ%2FuXcaonMBqPvNKoIYx48oSJa8i9mblcOQPKfMHXlNscrhd4AbJwSPcQdCEeyOZewyhusEDkKq1fSr0ijeG38m8z.0bf5dd91e05b94a658685450b4ed864d012342ac3acb1f4629fd57ce7c59e693.V2; Path=/auth/session/refresh; Expires=Thu, 29 Dec 2022 05:20:02 GMT; HttpOnly; Secure; SameSite=None"
+										},
+										{
+											"key": "Set-Cookie",
+											"value": "sIdRefreshToken=1b822d30-1b45-42d3-81e6-86f61988382c; Path=/; Expires=Thu, 29 Dec 2022 05:20:02 GMT; HttpOnly; Secure; SameSite=None"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "148"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"94-wCMlPygbVg85Ozwz/R6CQHKL8ik\""
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 20 Sep 2022 05:20:02 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"OK\",\n    \"createdNewUser\": false,\n    \"user\": {\n        \"phoneNumber\": \"+359898643635\",\n        \"id\": \"3195d194-e703-4266-8307-1494fdcc936b\",\n        \"timeJoined\": 1657460678286\n    }\n}"
+								},
+								{
+									"name": "Something is wrong",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "getAuthInformation",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Digest",
+										"value": "PYQn+Mn3ueNc5NmYK6vUCqDwe4dTTdVv7cnt5NBqQj69xCEx/cUDxdVP4O6vDJ8c2PpRH5Rs84LL9B2Rm9Mr0tyCmRnUDcNDDlgCKgl1WVv8kL+G41UzqTpTAP+pCzjOG32zanVnxg/6HoHHdnUugNVV9oV7v6Yp+8iiJnWblbKLq9xmbHBpl4HHQ/qxGfChjLr5zpoKqT/5ltAjk802bZv99SwUJX/U4COeA6AbDRU+btytw84C4NnRETk6wHhFbzrQvTlaS2v/hwVVG0GOoQFRyQ4ZFB1FHxogOhcfi+wgB+8WwuMddWJ3X+ZJwku4i0GcqV1N9kx5pREszKRkkg==",
+										"type": "text"
+									},
+									{
+										"key": "Signature",
+										"value": "hOkZ8pleCNIr7goyUzPo9HNVzZ9oeN3MHmjbkBJR1mP0lkp4/Bo/kh6Ce4SqG8sCOzrCBMsuyJHFeiUdJ8l4jbcwRxE4y/mqrE71XuvMGi4J7KuIkwFOAeGorZi8VQAhDkyrRd6EDqWFcvgmil224DMGw/TZ7qRswmvVZLOvA6KIhlMk0S4+V8/xrkZNLiZ4uhDHfG6GmcBcRDDtjbZ88WsbbeHt4Qc/wx9CjDLuPqiPA9kwnbTqkBNjbT3m3XPp6jIteKm8/ri31C9DDl9Pil4CfmDwIAQj+sigb0iPAlX99n14HmzL9FQPHmFSozTiPjtb922cCvULRhR7/cnbcQ==",
+										"type": "text"
+									},
+									{
+										"key": "Signature-input",
+										"value": "(host digest);created=1654275609571;keyid=arn:aws:kms:us-east-1:884422010005:key/39732224-6a26-47b9-92bc-1d99a8999ecb;",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}:4204/auth/userInfo",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "4204",
+									"path": [
+										"auth",
+										"userInfo"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Something is wrong",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Gives all documents and types",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  },\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  }\n]"
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "KYC",
+					"item": [
+						{
+							"name": "Post documents",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "front",
+											"type": "file",
+											"src": "/home/ivelinov/Pictures/Screenshot from 2022-07-14 14-59-37.png"
+										},
+										{
+											"key": "back",
+											"type": "file",
+											"src": "/home/ivelinov/Pictures/download (1).jpeg"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:4206/kyc",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4206",
+									"path": [
+										"kyc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Gateway",
+					"item": [
+						{
+							"name": "Auth",
+							"item": [
+								{
+									"name": "Auth With Codes 11111",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Digest",
+												"type": "text",
+												"value": "PYQn+Mn3ueNc5NmYK6vUCqDwe4dTTdVv7cnt5NBqQj69xCEx/cUDxdVP4O6vDJ8c2PpRH5Rs84LL9B2Rm9Mr0tyCmRnUDcNDDlgCKgl1WVv8kL+G41UzqTpTAP+pCzjOG32zanVnxg/6HoHHdnUugNVV9oV7v6Yp+8iiJnWblbKLq9xmbHBpl4HHQ/qxGfChjLr5zpoKqT/5ltAjk802bZv99SwUJX/U4COeA6AbDRU+btytw84C4NnRETk6wHhFbzrQvTlaS2v/hwVVG0GOoQFRyQ4ZFB1FHxogOhcfi+wgB+8WwuMddWJ3X+ZJwku4i0GcqV1N9kx5pREszKRkkg=="
+											},
+											{
+												"key": "Signature",
+												"type": "text",
+												"value": "hOkZ8pleCNIr7goyUzPo9HNVzZ9oeN3MHmjbkBJR1mP0lkp4/Bo/kh6Ce4SqG8sCOzrCBMsuyJHFeiUdJ8l4jbcwRxE4y/mqrE71XuvMGi4J7KuIkwFOAeGorZi8VQAhDkyrRd6EDqWFcvgmil224DMGw/TZ7qRswmvVZLOvA6KIhlMk0S4+V8/xrkZNLiZ4uhDHfG6GmcBcRDDtjbZ88WsbbeHt4Qc/wx9CjDLuPqiPA9kwnbTqkBNjbT3m3XPp6jIteKm8/ri31C9DDl9Pil4CfmDwIAQj+sigb0iPAlX99n14HmzL9FQPHmFSozTiPjtb922cCvULRhR7/cnbcQ=="
+											},
+											{
+												"key": "Signature-input",
+												"type": "text",
+												"value": "(host digest);created=1654275609571;keyid=4f9d5702-5816-4adb-9992-b30428e6b558;"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"phoneNumber\": \"+359898643635\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4204/auth/signinup/code",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4204",
+											"path": [
+												"auth",
+												"signinup",
+												"code"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Gives all documents and types",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/legals",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"legals"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  },\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  }\n]"
+										},
+										{
+											"name": "Something is wrong",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/legals",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"legals"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Resend",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Digest",
+												"type": "text",
+												"value": "PYQn+Mn3ueNc5NmYK6vUCqDwe4dTTdVv7cnt5NBqQj69xCEx/cUDxdVP4O6vDJ8c2PpRH5Rs84LL9B2Rm9Mr0tyCmRnUDcNDDlgCKgl1WVv8kL+G41UzqTpTAP+pCzjOG32zanVnxg/6HoHHdnUugNVV9oV7v6Yp+8iiJnWblbKLq9xmbHBpl4HHQ/qxGfChjLr5zpoKqT/5ltAjk802bZv99SwUJX/U4COeA6AbDRU+btytw84C4NnRETk6wHhFbzrQvTlaS2v/hwVVG0GOoQFRyQ4ZFB1FHxogOhcfi+wgB+8WwuMddWJ3X+ZJwku4i0GcqV1N9kx5pREszKRkkg=="
+											},
+											{
+												"key": "Signature",
+												"type": "text",
+												"value": "hOkZ8pleCNIr7goyUzPo9HNVzZ9oeN3MHmjbkBJR1mP0lkp4/Bo/kh6Ce4SqG8sCOzrCBMsuyJHFeiUdJ8l4jbcwRxE4y/mqrE71XuvMGi4J7KuIkwFOAeGorZi8VQAhDkyrRd6EDqWFcvgmil224DMGw/TZ7qRswmvVZLOvA6KIhlMk0S4+V8/xrkZNLiZ4uhDHfG6GmcBcRDDtjbZ88WsbbeHt4Qc/wx9CjDLuPqiPA9kwnbTqkBNjbT3m3XPp6jIteKm8/ri31C9DDl9Pil4CfmDwIAQj+sigb0iPAlX99n14HmzL9FQPHmFSozTiPjtb922cCvULRhR7/cnbcQ=="
+											},
+											{
+												"key": "Signature-input",
+												"type": "text",
+												"value": "(host digest);created=1654275609571;keyid=4f9d5702-5816-4adb-9992-b30428e6b558;"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"phoneNumber\": \"+359898643635\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4204/auth/signinup/code",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4204",
+											"path": [
+												"auth",
+												"signinup",
+												"code"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Gives all documents and types",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/legals",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"legals"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  },\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  }\n]"
+										},
+										{
+											"name": "Something is wrong",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/legals",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"legals"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Finish Auth with sms code",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"deviceId\": \"2t/lsm2uyM+5t1XI1j4NoHhbuTQYqwZ8bdkBTvpcAas=\",\n    \"preAuthSessionId\": \"KX7eCGDffEyC6UBpz_GspQT1clSJomwRYnawhH9Bb-8=\",\n    \"userInputCode\": \"392609\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:4000/api/v1/auth/signinup/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"signinup",
+												""
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Gives all documents and types",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/legals",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"legals"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  },\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  }\n]"
+										},
+										{
+											"name": "Something is wrong",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/legals",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"legals"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Finish Auth with sms code Copy",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:4000/api/v1/auth/user",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "4000",
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"user"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Something is wrong",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/legals",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"legals"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Gives all documents and types",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/legals",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"legals"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  },\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  }\n]"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Create Virtual Card Copy",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Ivan Velinov\",\r\n    \"address\": {\r\n        \"street\": \"sttt\",\r\n        \"city\": \"Sofia\",\r\n        \"postal_code\": \"1000\",\r\n        \"country\": \"BG\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/v1/legal/legals",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"legal",
+										"legals"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Virtual Card Copy 3",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Ivan Velinov\",\r\n    \"address\": {\r\n        \"street\": \"sttt\",\r\n        \"city\": \"Sofia\",\r\n        \"postal_code\": \"1000\",\r\n        \"country\": \"BG\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/v1/payments/cards",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"payments",
+										"cards"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "AdminPanel",
+					"item": [
+						{
+							"name": "Auth",
+							"item": [
+								{
+									"name": "Generate OTP",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"username\": \"wankishh3\",\n\t\"password\": \"123123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/auth/generate",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"auth",
+												"generate"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Login",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"username\": \"wankishh3\",\n\t\"password\": \"123123\",\n\t\"code\": \"168167\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/auth/login",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"auth",
+												"login"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "AdministratorsAPI",
+							"item": [
+								{
+									"name": "List",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/api/administrators",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"administrators"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"username\": \"wankishh5\",\n\t\"password\": \"123\",\n\t\"name\": \"Ivan Velinov\",\n\t\"phone\": \"+359898643635\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/administrators/create",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"administrators",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"name\": \"Ivan Velinov\",\n\t\"phone\": \"+359898643636\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/administrators/update/3",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"administrators",
+												"update",
+												"3"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "ChangePassword",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"old_password\": \"admin4\",\n\t\"new_password\": \"admin\",\n\t\"confirm_new\": \"admin\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/administrators/change_password/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"administrators",
+												"change_password",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"name\": \"Ivan Velinov\",\n\t\"phone\": \"+359898643636\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/administrators/delete/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"administrators",
+												"delete",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Production",
+			"item": [
+				{
+					"name": "Signup Path",
+					"item": [
+						{
+							"name": "Generates Key pairs",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Digest",
+										"value": "PYQn+Mn3ueNc5NmYK6vUCqDwe4dTTdVv7cnt5NBqQj69xCEx/cUDxdVP4O6vDJ8c2PpRH5Rs84LL9B2Rm9Mr0tyCmRnUDcNDDlgCKgl1WVv8kL+G41UzqTpTAP+pCzjOG32zanVnxg/6HoHHdnUugNVV9oV7v6Yp+8iiJnWblbKLq9xmbHBpl4HHQ/qxGfChjLr5zpoKqT/5ltAjk802bZv99SwUJX/U4COeA6AbDRU+btytw84C4NnRETk6wHhFbzrQvTlaS2v/hwVVG0GOoQFRyQ4ZFB1FHxogOhcfi+wgB+8WwuMddWJ3X+ZJwku4i0GcqV1N9kx5pREszKRkkg==",
+										"type": "text"
+									},
+									{
+										"key": "Signature",
+										"value": "hOkZ8pleCNIr7goyUzPo9HNVzZ9oeN3MHmjbkBJR1mP0lkp4/Bo/kh6Ce4SqG8sCOzrCBMsuyJHFeiUdJ8l4jbcwRxE4y/mqrE71XuvMGi4J7KuIkwFOAeGorZi8VQAhDkyrRd6EDqWFcvgmil224DMGw/TZ7qRswmvVZLOvA6KIhlMk0S4+V8/xrkZNLiZ4uhDHfG6GmcBcRDDtjbZ88WsbbeHt4Qc/wx9CjDLuPqiPA9kwnbTqkBNjbT3m3XPp6jIteKm8/ri31C9DDl9Pil4CfmDwIAQj+sigb0iPAlX99n14HmzL9FQPHmFSozTiPjtb922cCvULRhR7/cnbcQ==",
+										"type": "text"
+									},
+									{
+										"key": "Signature-input",
+										"value": "(host digest);created=1654275609571;keyid=arn:aws:kms:us-east-1:884422010005:key/39732224-6a26-47b9-92bc-1d99a8999ecb;",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"deviceId\": \"65466\",\r\n\t\"applicationId\": \"12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://app.soldibox.com/api/v1/crypto/generate/keys",
+									"protocol": "https",
+									"host": [
+										"app",
+										"soldibox",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"crypto",
+										"generate",
+										"keys"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Auth with Codes",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Digest",
+										"value": "UDQ1Soxuj6Gh+9DjBZGUAlloMdMMrghye3SoIB2YHMKgoCsamCETmm8k4cFgNPAC3SiC7xqUrE3QoKbb2ubDXavCrVKqTC8KohFtDz9WauWAA3wl0nIz80Yq7TDXob4wPXFH8w4S0cvZjH3Dnzu6M0bnWdBaeEbPe73PAPbPqLGvffbm8U4wkzvtU23Y5Z5BM14Iwd+9Sql67C6TKckqOcKxzMQsxTURQZ8x7BMEdvpkfpk3jP3OP3EaXnX4z28MdmvETO5zSkMRE3T5WJ9Q+3Jo1Ic0iBnHXfgvcWOqEMDYMeXDT/WVhuKWwMcezArlHdRsb7OVzVzYf/hJip9CMQ==",
+										"type": "text"
+									},
+									{
+										"key": "Signature",
+										"value": "VxSn6UNt469B0UaMv49jijP1caSI75c/L3/fnWG2LX6Inb+V/O8WdCV4726rmn9kjjqk2Qyf1CTPUXr2b/9KuSrIf87WEG2vrS30AyqgKa7SQ8JrQOWZCVkEKfukCUOps9kmDWi8beX7GlJoNHwZnNHfIb0XEio5Qh3wcldMZiw8EdmCbVKvl5xOIejWeJwX9ijqqf1svcc3RaDXrtH8WzLYK4xGOoe3w7TTPLgE3zk6rhecAH3RObiOFiv1npegctN4hpHuAwsMFaHhtfkh2rVjZaZBiOqsFvQC0pgyEGsEETI30IXamnCz/vCi/2zrdFiyewOSj3EhhsJTU/sFkQ==",
+										"type": "text"
+									},
+									{
+										"key": "Signature-input",
+										"value": "(host digest);created=1660398982571;keyid=4f9d5702-5816-4adb-9992-b30428e6b558",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"phoneNumber\": \"+359898643635\",\r\n\t\"usageType\": \"signup\",\r\n\t\"deviceId\": \"123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://app.soldibox.com/api/v1/auth/signinup/signup/code",
+									"protocol": "https",
+									"host": [
+										"app",
+										"soldibox",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signinup",
+										"signup",
+										"code"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Auth with Codes",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Digest",
+												"value": "u4MwFoJApZ5u6mkFBo0LoaRbK9zWJLCoz2H1tXTx4zFARG/0jjCQMc+gtE2yyywazPfNrRTIkBsCTMp3kot6VeafFIoLHUdejGjeRPbwBshQahV1OyypBpGvU45JIoYvir/IbinpWHcaAT+r9tmcwpfZdjvqHBXAwepben8CIPN1sffHXBt0Yz97q2HbI7vPnJJMP3WX5bsBirPdhSS1iArKfmZ0CSm1U4Mt4DcaeiQH9/FnXUl8sx5mfBOCkXKo8+pUESM2MmEXl+IGMCP5BNj04GJ3Di9EqxSTfJ3fOw9ICx8ZwMOQ0Zh79jPZT26XwcrufO2tB5zLVOke+SLTyQ==",
+												"type": "text"
+											},
+											{
+												"key": "Signature",
+												"value": "gfvJSjDobg/iMwlIqw6644IxQbxykAgWiNZORX4YdWJQZNGC+owlwyaQ74BVrWJ8da6zOn40WLbkF7nwT1kvuX2+gmFZ8vN53brfCNXczWcAEy1EPma2KaVDaU4IIKy7WhvJO6Ez27pzBhMWC7IQT9dVKO+RO0BQB2BXhNW7Mtc8t+jCGHXhFoo5EJ4gqsIXkP9I6dFKXOP+XyutU4X1uBnunZgapze1LEbVmO6Gd+ktBbuWcsR7GDo6+E2nyPK8lAST9xyLzN7qptgqpXH70MIztLXmc7u8KCpnsyVcBR7RKYtf9Hj36BJvTA5pGieROeFi13ePjsq+Ahos7M1V8g==",
+												"type": "text"
+											},
+											{
+												"key": "Signature-input",
+												"value": "(host digest);created=1657511588441;keyid=bc363a20-14bd-4e5a-945c-7b8c0d1eab8e;",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"phoneNumber\": \"+359898643635\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://app.soldibox.com/api/v1/auth/signinup/code",
+											"protocol": "https",
+											"host": [
+												"app",
+												"soldibox",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"signinup",
+												"code"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sun, 07 Aug 2022 12:38:26 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "168"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "x-powered-by",
+											"value": "Express"
+										},
+										{
+											"key": "etag",
+											"value": "W/\"a8-lErb0oA65VzuCnHLtIuKLul3/aA\""
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"OK\",\n    \"deviceId\": \"h3J03JED0OVJulU12pN1UC5oLOZgyCV01D3+6VLDZJo=\",\n    \"flowType\": \"USER_INPUT_CODE\",\n    \"preAuthSessionId\": \"uTk4jqLAoHsb-2yMoKOKWWOanneYpPzMBqrUAiQXkFE=\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Finish Auth with sms code",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Digest",
+										"value": "EUwlojeojrzMA1Adnzt6kWl+x5w6zUP1cLBSdbm8Kq0mMFTYYPQaYvnNd4WBnwTP/gv63sHgECemR91iCh5L/azGL28oh3YmM7pp2OAr2ZcF4lRiagYNlQJQBYpfbABY8sSbuaHTxPPUPtvuQ2ai619bW8Uc0J2ygggqhaEhHmY61Ejd/78ERcf1KI89xZ1rYlm6vOeJRvFSUqLbnpg5gnIxKI+0WtfptEHuanNuZm70U2N5T7bBI+As8Udv0iQxot70NJ9rx6kjNuEo+ld9DorcTSeHGwwifrredUuQPhmQrDKl/jtHt9+KmfkzrQradRVHeN8/LQjxc2ntk0jw/g==",
+										"type": "text"
+									},
+									{
+										"key": "Signature",
+										"value": "zE+LkKX/UCmaciwRWb1krjUYysYJLyRxhvzuBj+RrL/9JxHD3LtdqEKua0zvSr6xl7RGPuOQkoL5iPLKRKA0OxvQ8v28SlSSNpfoFLME2UckgcxVz17tyCww8cIY5qg/Z2ptouk+eutltqO19ew8fW0YL92R3Y0SplJPdhfbQHLbLAd0o8L7jz1u8xbMMxecmmNalDRRpByTXlL2bp0Ry7oEJoW6w9LlNtf4ByrOvdfzze7XPaRioELFTFytCSMqc/5zqAl5XlxXcUulptyomGAjxmBlU+UQRkmSrDhawHX+MOVeJAo/ThUkU1ENqsZyS6L6iGpyWGW2U48esGkqow==",
+										"type": "text"
+									},
+									{
+										"key": "Signature-input",
+										"value": "(host digest);created=1655110319750;keyid=arn:aws:kms:us-east-1:884422010005:key/39732224-6a26-47b9-92bc-1d99a8999ecb;",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"deviceId\": \"CStv1apLsW3H0lgT/+Q2+M+5Gt5HoQ5ws+MuFLsSLuM=\",\r\n  \"preAuthSessionId\": \"yTiqvto52eKVtkU26TTVtLwq8sUOCdErZe7TBizASjk=\",\r\n  \"userInputCode\": \"799069\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://app.soldibox.com/api/v1/auth/signinup",
+									"protocol": "https",
+									"host": [
+										"app",
+										"soldibox",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signinup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create payment method",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"number\": \"223123131\",\n    \"expMonth\": \"9\",\n    \"expYear\": \"2025\",\n    \"cvc\": \"923\",\n    \"holder\": \"Ivan velinov3\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/payments/methods",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"payments",
+										"methods"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "acceptLegal",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Digest",
+										"type": "text",
+										"value": "PYQn+Mn3ueNc5NmYK6vUCqDwe4dTTdVv7cnt5NBqQj69xCEx/cUDxdVP4O6vDJ8c2PpRH5Rs84LL9B2Rm9Mr0tyCmRnUDcNDDlgCKgl1WVv8kL+G41UzqTpTAP+pCzjOG32zanVnxg/6HoHHdnUugNVV9oV7v6Yp+8iiJnWblbKLq9xmbHBpl4HHQ/qxGfChjLr5zpoKqT/5ltAjk802bZv99SwUJX/U4COeA6AbDRU+btytw84C4NnRETk6wHhFbzrQvTlaS2v/hwVVG0GOoQFRyQ4ZFB1FHxogOhcfi+wgB+8WwuMddWJ3X+ZJwku4i0GcqV1N9kx5pREszKRkkg=="
+									},
+									{
+										"key": "Signature",
+										"type": "text",
+										"value": "hOkZ8pleCNIr7goyUzPo9HNVzZ9oeN3MHmjbkBJR1mP0lkp4/Bo/kh6Ce4SqG8sCOzrCBMsuyJHFeiUdJ8l4jbcwRxE4y/mqrE71XuvMGi4J7KuIkwFOAeGorZi8VQAhDkyrRd6EDqWFcvgmil224DMGw/TZ7qRswmvVZLOvA6KIhlMk0S4+V8/xrkZNLiZ4uhDHfG6GmcBcRDDtjbZ88WsbbeHt4Qc/wx9CjDLuPqiPA9kwnbTqkBNjbT3m3XPp6jIteKm8/ri31C9DDl9Pil4CfmDwIAQj+sigb0iPAlX99n14HmzL9FQPHmFSozTiPjtb922cCvULRhR7/cnbcQ=="
+									},
+									{
+										"key": "Signature-input",
+										"type": "text",
+										"value": "(host digest);created=1654275609571;keyid=arn:aws:kms:us-east-1:884422010005:key/39732224-6a26-47b9-92bc-1d99a8999ecb;"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"signature\": \"asdasdsdj12b12jhbjwdbj\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}api/v1/auth/validateUser",
+									"host": [
+										"{{baseUrl}}api"
+									],
+									"path": [
+										"v1",
+										"auth",
+										"validateUser"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Gives all documents and types",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  },\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  }\n]"
+								},
+								{
+									"name": "Something is wrong",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "KYC documents upload",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "front",
+											"type": "file",
+											"src": "/home/ivelinov/Pictures/Screenshot from 2022-07-14 14-59-37.png"
+										},
+										{
+											"key": "back",
+											"type": "file",
+											"src": "/home/ivelinov/Pictures/download (1).jpeg"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:4206/kyc",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4206",
+									"path": [
+										"kyc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get payment methods",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/payments/methods",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"payments",
+										"methods"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Virtual Card",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Digest",
+										"value": "rHwQEPR0sHs+cdquB0bR+fcvup2xV+SfAvb+rKbYcVh6T9WA3fclyBTK8/WAxl3qUhtpDlY2GWq6TMTQ1dSs71Wxu2hJLJ5HE3ATNw9dvPsCtkHQHEX4/MXtdAXR8/pEvb10ouTj6DoSHSAN5RqO0dhB+QJ2JWEorDOO3rX0W9jfvWRGvOJ9G3Z+FwOlBg4zKRxpsB1COHEjX8adZkY0walbENadAUfluTqnv5febgl2joOHrNjjMCRxF+KnUEzboU3Tnb2KldTz412HkxBFUpgpMxV8Kv9QEK3U96+fZfc/4ZXiWgDwy6nenCFlUqypykMueGCH89VDJ28HC2DpwA==",
+										"type": "text"
+									},
+									{
+										"key": "Signature",
+										"value": "oqE+tXcjUTKu+CqfviQkVobdk4eGA86JvjsQnkthgU5X5VFE7vSmw8Rr3Tak2AmSAHLyZX1GjIReLDuv6t4DUPtAnz+EpDILkGX/duybKosGVZxZ+7d7hLbqvKRQHR2kgi3LGiy53NBwzFRae7t1HCrGEskYN2iyrxKvbpLvSSYXLi1LtvkWqaCq+wuw46AUcXYJqHnwCsl0/WW1E7R2U0+KxoCKBIuidbNENZDm2O/uzB6E50dtdlaEhIuTW10A6GlhSGg90IN0NKVC1uEwGIXOVZY3WGqFDUwAIWmM66Lao84FPyyD/YS8HYQbT9M16ydSA6Yh8OsS4Qo7DrdKMQ==",
+										"type": "text"
+									},
+									{
+										"key": "Signature-Input",
+										"value": "(host digest);created=1657516390617;keyid=bc363a20-14bd-4e5a-945c-7b8c0d1eab8e;",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Ivan Velinov\",\r\n    \"address\": {\r\n        \"street\": \"sttt\",\r\n        \"city\": \"Sofia\",\r\n        \"postal_code\": \"1000\",\r\n        \"country\": \"BG\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/payments/cards",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"payments",
+										"cards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update payment method",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"title\": \"HopeDown\",\n\t\"expMonth\": \"12\",\n\t\"expYear\": \"2023\",\n\t\"cvc\": \"900\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/v1/payments/methods/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"payments",
+										"methods",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Set default payment method",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/api/v1/payments/methods/1/default",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"payments",
+										"methods",
+										"1",
+										"default"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete method",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Cookie",
+										"type": "text",
+										"value": "sAccessToken=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsInZlcnNpb24iOiIyIn0%3D.eyJzZXNzaW9uSGFuZGxlIjoiMWQzMTFjODEtZTIzNy00MDJhLTgxZTItNzBkMmUwZTJhNGM0IiwidXNlcklkIjoiMzE5NWQxOTQtZTcwMy00MjY2LTgzMDctMTQ5NGZkY2M5MzZiIiwicmVmcmVzaFRva2VuSGFzaDEiOiJiMWU4NTUwNGFhYzUxZWNmMGMzMDllNGMzZDRhZGE2MGEwYzIxMzEwMWZkY2UxODcyYTAxMmU5ODM0OTE4YjIwIiwidXNlckRhdGEiOnt9LCJleHBpcnlUaW1lIjoxNjYzNjU0ODAyNTA0LCJ0aW1lQ3JlYXRlZCI6MTY2MzY1MTIwMjUwNCwibG1ydCI6MTY2MzY1MTIwMjUwNH0%3D.UU4eoj%2FeGAiJzH%2FYCpzZD%2B6lC8kbFdDaHTOD5ekubtqrNqBgD%2BEObb%2FV1KX73w3J6j%2BW78EnK97Cfr0QqDgv7ybL4aE00YAb5NrSGeAVD76q80pRm2OK%2BTb3gsrnOqHC%2BAGp4aZh3PeC%2B3AFbJ1NK54mC3dFDtNviKruKkMGor8UOspcnqyvkmU5%2BdACFfGQHP%2FpoJHcqVLLJeDOk25Nv9SIwxna0PHuYBaY%2F5C1nqLWLMXORLdlraC7rrVUSashhijFOAHz%2BHIQfTyErlduDcQOswTX4nAj1ogdnRHuIXANyYY4r6A7skPALdnkfI6x3ZLCrH9Eg6IywHUn7zfh%2FQ%3D%3D sIdRefreshToken=1b822d30-1b45-42d3-81e6-86f61988382c",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost:4000/api/v1/payments/methods/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"api",
+										"v1",
+										"payments",
+										"methods",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TopUp",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Digest",
+										"value": "FdN9ktzLqwr6GH109SoSpFaXLpmr96ke8zSLhUuV1MtOwMU5Soinnu+MPIpRn/yO4BfY6tISNFz6sWOX65q6cBnKHeNUzZc0ko99V/MashNIOEnHFuVesyUTN9Zjq/QWbb/w0b8x5JnB8pXQqPq5B8GhK2eRgkcGoeVVZjtzP40uX93ZJpiW4Nl5jsvKj9QjsIdmUWmQs33tUJkEJh2iII75uM3+wfdQBlzaibe4xMtWXaQV6Zjhii2wbz4kaQl6coHmoELklmK3fuV0M3DokL1d8Z8ApUoAdmZDG98Eulf2YHtyODxi0zMyvehd2hNlSx2PDc0QA8UHX63WKFGCvw==",
+										"type": "text"
+									},
+									{
+										"key": "Signature",
+										"value": "oc5laThyeUE1kmFPUm8DCMRNnrQ9lKhWL8kl3yN0FWd2iKzsvYCcMXE6sqIXrVrvv7J4BNstcAcdTFRqlvbvtWDIJtCm+bnkvhlLb8SaRaXgRKmO+jf8YP/9OouuXBOh+AylQb9NEXqNNkMWncyKbgzgdz9SQLcOTZt+p8TVTCI3EybkQA18iXm1DbLVV92CN9PNj51jiE/6wh2vVc6ODyu/RbsT0PEslR6nkiYFiIG21p4oBnm8Y7TbEmUyf4KwNGnSdHib1sEm0IWjECAiekwu8dp25nU2Y8LrPhP+tDEGq43/yp7db/vUmUqcno9tsimJuF4Nx2TC4cWsuJBnbw==",
+										"type": "text"
+									},
+									{
+										"key": "Signature-Input",
+										"value": "(host digest);created=1657959656010;keyid=bc363a20-14bd-4e5a-945c-7b8c0d1eab8e;",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"amount\": 2500.25,\n    \"sourceId\": \"2\",\n    \"sourceType\": \"creditCard\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/payments/transactions",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"payments",
+										"transactions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Virtual Cards",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/payments/cards",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"payments",
+										"cards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Generate Seed Phrase",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Digest",
+										"value": "PYQn+Mn3ueNc5NmYK6vUCqDwe4dTTdVv7cnt5NBqQj69xCEx/cUDxdVP4O6vDJ8c2PpRH5Rs84LL9B2Rm9Mr0tyCmRnUDcNDDlgCKgl1WVv8kL+G41UzqTpTAP+pCzjOG32zanVnxg/6HoHHdnUugNVV9oV7v6Yp+8iiJnWblbKLq9xmbHBpl4HHQ/qxGfChjLr5zpoKqT/5ltAjk802bZv99SwUJX/U4COeA6AbDRU+btytw84C4NnRETk6wHhFbzrQvTlaS2v/hwVVG0GOoQFRyQ4ZFB1FHxogOhcfi+wgB+8WwuMddWJ3X+ZJwku4i0GcqV1N9kx5pREszKRkkg==",
+										"type": "text"
+									},
+									{
+										"key": "Signature",
+										"value": "hOkZ8pleCNIr7goyUzPo9HNVzZ9oeN3MHmjbkBJR1mP0lkp4/Bo/kh6Ce4SqG8sCOzrCBMsuyJHFeiUdJ8l4jbcwRxE4y/mqrE71XuvMGi4J7KuIkwFOAeGorZi8VQAhDkyrRd6EDqWFcvgmil224DMGw/TZ7qRswmvVZLOvA6KIhlMk0S4+V8/xrkZNLiZ4uhDHfG6GmcBcRDDtjbZ88WsbbeHt4Qc/wx9CjDLuPqiPA9kwnbTqkBNjbT3m3XPp6jIteKm8/ri31C9DDl9Pil4CfmDwIAQj+sigb0iPAlX99n14HmzL9FQPHmFSozTiPjtb922cCvULRhR7/cnbcQ==",
+										"type": "text"
+									},
+									{
+										"key": "Signature-input",
+										"value": "(host digest);created=1654275609571;keyid=arn:aws:kms:us-east-1:884422010005:key/39732224-6a26-47b9-92bc-1d99a8999ecb;",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/crypto/generate/seed-phrase",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"crypto",
+										"generate",
+										"seed-phrase"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Generate Wallet keys by seed phrase",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Digest",
+										"value": "Y0Wr5Bs695cdQljKWtu9na9jGysCtoNE5vy8OiO96j9te3lPaNni3+slu/VoHwiuZ8d2OVkanKW1DUpMf2Y2JA6ov3bDJKHUucYUXq+AUge0Mdpi4aijC/N2ihzIRa8YkpQ1kcJc205q7yGInPWGbI47MUfm0R/mW1G4jkrOANeGw7/jD7cf43Ad45ROrLVj8j/PNT8Pq9XAPfqc9Weuszyt0B1Fp4dwQfdGGziwPBPit8GxyvxGkHJ3WRiiOSCt25ulAjMPUnpIusZEd6+0oFjMRFkXmUwQXxzoaBDakrS9x94vILuBKdJEVXTA7IXep2wrC8ZtjcqXb1v8SyqHBQ==",
+										"type": "text"
+									},
+									{
+										"key": "Signature",
+										"value": "MShlFJHmH5zPlEVVDdLlrurCA1rUEEUXRDLRUf644CpIJ2BJtpDhSlnsdZ3x+luZWz12ue/kscVaVQCBQc5BvUyiB8OutpaHRB1pVSoBZM1J8DatSSlzTFSjvRoxoBENoISgj7jgHi7Vhyuf0u+WR6A7vJkMkU9FbpLDxDx99UBBuZWoENvLzhWLOKtauOY0a5sKwj2aAY9wZPZcurc0jwvDoNwL0FMU2KqShONbxJwU+vr28JUQ84lyQuYQ8VvKnftGXyxnHaTCDv8GWTJiWcfZ7Qr7FWWhbhiFbD+kLDUhmus0H9cRT4QS14pwX8l0KKvFRcp3WHsGUs1qLBBk1A==",
+										"type": "text"
+									},
+									{
+										"key": "Signature-input",
+										"value": "(host digest);created=1655150113412;keyid=db9ac6bb-f10c-4fcb-b412-7d178b2f6669;",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"seedPhrase\": \"alien hawk slice total amused wrist shaft audit measure cup home erase\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/crypto/generate/wallet",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"crypto",
+										"generate",
+										"wallet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAuthInformation Copy",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Digest",
+										"value": "PYQn+Mn3ueNc5NmYK6vUCqDwe4dTTdVv7cnt5NBqQj69xCEx/cUDxdVP4O6vDJ8c2PpRH5Rs84LL9B2Rm9Mr0tyCmRnUDcNDDlgCKgl1WVv8kL+G41UzqTpTAP+pCzjOG32zanVnxg/6HoHHdnUugNVV9oV7v6Yp+8iiJnWblbKLq9xmbHBpl4HHQ/qxGfChjLr5zpoKqT/5ltAjk802bZv99SwUJX/U4COeA6AbDRU+btytw84C4NnRETk6wHhFbzrQvTlaS2v/hwVVG0GOoQFRyQ4ZFB1FHxogOhcfi+wgB+8WwuMddWJ3X+ZJwku4i0GcqV1N9kx5pREszKRkkg==",
+										"type": "text"
+									},
+									{
+										"key": "Signature",
+										"value": "hOkZ8pleCNIr7goyUzPo9HNVzZ9oeN3MHmjbkBJR1mP0lkp4/Bo/kh6Ce4SqG8sCOzrCBMsuyJHFeiUdJ8l4jbcwRxE4y/mqrE71XuvMGi4J7KuIkwFOAeGorZi8VQAhDkyrRd6EDqWFcvgmil224DMGw/TZ7qRswmvVZLOvA6KIhlMk0S4+V8/xrkZNLiZ4uhDHfG6GmcBcRDDtjbZ88WsbbeHt4Qc/wx9CjDLuPqiPA9kwnbTqkBNjbT3m3XPp6jIteKm8/ri31C9DDl9Pil4CfmDwIAQj+sigb0iPAlX99n14HmzL9FQPHmFSozTiPjtb922cCvULRhR7/cnbcQ==",
+										"type": "text"
+									},
+									{
+										"key": "Signature-input",
+										"value": "(host digest);created=1654275609571;keyid=arn:aws:kms:us-east-1:884422010005:key/39732224-6a26-47b9-92bc-1d99a8999ecb;",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}:4204/auth/userInfo",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "4204",
+									"path": [
+										"auth",
+										"userInfo"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Gives all documents and types",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  },\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  }\n]"
+								},
+								{
+									"name": "Something is wrong",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Signout",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Digest",
+										"value": "PYQn+Mn3ueNc5NmYK6vUCqDwe4dTTdVv7cnt5NBqQj69xCEx/cUDxdVP4O6vDJ8c2PpRH5Rs84LL9B2Rm9Mr0tyCmRnUDcNDDlgCKgl1WVv8kL+G41UzqTpTAP+pCzjOG32zanVnxg/6HoHHdnUugNVV9oV7v6Yp+8iiJnWblbKLq9xmbHBpl4HHQ/qxGfChjLr5zpoKqT/5ltAjk802bZv99SwUJX/U4COeA6AbDRU+btytw84C4NnRETk6wHhFbzrQvTlaS2v/hwVVG0GOoQFRyQ4ZFB1FHxogOhcfi+wgB+8WwuMddWJ3X+ZJwku4i0GcqV1N9kx5pREszKRkkg==",
+										"type": "text"
+									},
+									{
+										"key": "Signature",
+										"value": "hOkZ8pleCNIr7goyUzPo9HNVzZ9oeN3MHmjbkBJR1mP0lkp4/Bo/kh6Ce4SqG8sCOzrCBMsuyJHFeiUdJ8l4jbcwRxE4y/mqrE71XuvMGi4J7KuIkwFOAeGorZi8VQAhDkyrRd6EDqWFcvgmil224DMGw/TZ7qRswmvVZLOvA6KIhlMk0S4+V8/xrkZNLiZ4uhDHfG6GmcBcRDDtjbZ88WsbbeHt4Qc/wx9CjDLuPqiPA9kwnbTqkBNjbT3m3XPp6jIteKm8/ri31C9DDl9Pil4CfmDwIAQj+sigb0iPAlX99n14HmzL9FQPHmFSozTiPjtb922cCvULRhR7/cnbcQ==",
+										"type": "text"
+									},
+									{
+										"key": "Signature-input",
+										"value": "(host digest);created=1654275609571;keyid=arn:aws:kms:us-east-1:884422010005:key/39732224-6a26-47b9-92bc-1d99a8999ecb;",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}:4204/auth/userInfo",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"port": "4204",
+									"path": [
+										"auth",
+										"userInfo"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Gives all documents and types",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  },\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  }\n]"
+								},
+								{
+									"name": "Something is wrong",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Signin Path",
+					"item": [
+						{
+							"name": "Auth with Codes",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Digest",
+										"value": "PYQn+Mn3ueNc5NmYK6vUCqDwe4dTTdVv7cnt5NBqQj69xCEx/cUDxdVP4O6vDJ8c2PpRH5Rs84LL9B2Rm9Mr0tyCmRnUDcNDDlgCKgl1WVv8kL+G41UzqTpTAP+pCzjOG32zanVnxg/6HoHHdnUugNVV9oV7v6Yp+8iiJnWblbKLq9xmbHBpl4HHQ/qxGfChjLr5zpoKqT/5ltAjk802bZv99SwUJX/U4COeA6AbDRU+btytw84C4NnRETk6wHhFbzrQvTlaS2v/hwVVG0GOoQFRyQ4ZFB1FHxogOhcfi+wgB+8WwuMddWJ3X+ZJwku4i0GcqV1N9kx5pREszKRkkg==",
+										"type": "text"
+									},
+									{
+										"key": "Signature",
+										"value": "hOkZ8pleCNIr7goyUzPo9HNVzZ9oeN3MHmjbkBJR1mP0lkp4/Bo/kh6Ce4SqG8sCOzrCBMsuyJHFeiUdJ8l4jbcwRxE4y/mqrE71XuvMGi4J7KuIkwFOAeGorZi8VQAhDkyrRd6EDqWFcvgmil224DMGw/TZ7qRswmvVZLOvA6KIhlMk0S4+V8/xrkZNLiZ4uhDHfG6GmcBcRDDtjbZ88WsbbeHt4Qc/wx9CjDLuPqiPA9kwnbTqkBNjbT3m3XPp6jIteKm8/ri31C9DDl9Pil4CfmDwIAQj+sigb0iPAlX99n14HmzL9FQPHmFSozTiPjtb922cCvULRhR7/cnbcQ==",
+										"type": "text"
+									},
+									{
+										"key": "Signature-input",
+										"value": "(host digest);created=1654275609571;keyid=4f9d5702-5816-4adb-9992-b30428e6b558;",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phoneNumber\": \"+359898643635\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/auth/signinup/code",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signinup",
+										"code"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Gives all documents and types",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  },\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  }\n]"
+								},
+								{
+									"name": "Something is wrong",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Finish Auth with sms code",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Digest",
+										"value": "PYQn+Mn3ueNc5NmYK6vUCqDwe4dTTdVv7cnt5NBqQj69xCEx/cUDxdVP4O6vDJ8c2PpRH5Rs84LL9B2Rm9Mr0tyCmRnUDcNDDlgCKgl1WVv8kL+G41UzqTpTAP+pCzjOG32zanVnxg/6HoHHdnUugNVV9oV7v6Yp+8iiJnWblbKLq9xmbHBpl4HHQ/qxGfChjLr5zpoKqT/5ltAjk802bZv99SwUJX/U4COeA6AbDRU+btytw84C4NnRETk6wHhFbzrQvTlaS2v/hwVVG0GOoQFRyQ4ZFB1FHxogOhcfi+wgB+8WwuMddWJ3X+ZJwku4i0GcqV1N9kx5pREszKRkkg==",
+										"type": "text"
+									},
+									{
+										"key": "Signature",
+										"value": "hOkZ8pleCNIr7goyUzPo9HNVzZ9oeN3MHmjbkBJR1mP0lkp4/Bo/kh6Ce4SqG8sCOzrCBMsuyJHFeiUdJ8l4jbcwRxE4y/mqrE71XuvMGi4J7KuIkwFOAeGorZi8VQAhDkyrRd6EDqWFcvgmil224DMGw/TZ7qRswmvVZLOvA6KIhlMk0S4+V8/xrkZNLiZ4uhDHfG6GmcBcRDDtjbZ88WsbbeHt4Qc/wx9CjDLuPqiPA9kwnbTqkBNjbT3m3XPp6jIteKm8/ri31C9DDl9Pil4CfmDwIAQj+sigb0iPAlX99n14HmzL9FQPHmFSozTiPjtb922cCvULRhR7/cnbcQ==",
+										"type": "text"
+									},
+									{
+										"key": "Signature-input",
+										"value": "(host digest);created=1654275609571;keyid=arn:aws:kms:us-east-1:884422010005:key/39732224-6a26-47b9-92bc-1d99a8999ecb;",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phoneNumber\": \"25\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/auth/signup/code",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signup",
+										"code"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Gives all documents and types",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  },\n  {\n    \"type\": \"privacyPolicy\",\n    \"body\": \"<h1>privacyPolicy</h1>\"\n  }\n]"
+								},
+								{
+									"name": "Something is wrong",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/legals",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"legals"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "keyId",
+			"value": "0"
+		}
+	]
+}

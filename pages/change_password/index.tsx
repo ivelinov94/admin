@@ -1,4 +1,3 @@
-
 import { Typography } from '@mui/material';
 import type { GetServerSidePropsContext, NextPage } from 'next'
 import Layout from '../../components/Layout';
@@ -6,11 +5,10 @@ import { withSessionSsr } from '../../lib/withSession';
 import { setAuthState, setAuthUser } from '../../store/authSlice';
 import { AppStore, wrapper } from '../../store/store';
 
-
-const UpdateAdministrator: NextPage = () => {
+const ChangePassword: NextPage = () => {
 	return (
 		<Layout>
-			<Typography>Update Administrator</Typography>
+			<Typography>System Logs</Typography>
 		</Layout>
 	)
 }
@@ -22,7 +20,6 @@ const getProps = async (context: GetServerSidePropsContext, store: AppStore) => 
 	store.dispatch(setAuthUser(user || undefined));
 	store.dispatch(setAuthState(!!user));
 
-
 	if(!user) {
 		return {
 			redirect: {
@@ -31,7 +28,6 @@ const getProps = async (context: GetServerSidePropsContext, store: AppStore) => 
 			},
 		}
 	}
-
 
 	return {
 		props: {
@@ -44,4 +40,4 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => {
 	return withSessionSsr((context) => getProps(context, store));
 });
 
-export default UpdateAdministrator;
+export default ChangePassword;
