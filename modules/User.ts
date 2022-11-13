@@ -39,6 +39,36 @@ export const UserMetaData = sequelize.define('UserMetaData', {
 	timestamps: false,
 });
 
+
+export const UserSessionInfo = sequelize.define('UserSessionInfo', {
+	// Model attributes are defined here
+	session_handle: {
+		type: DataTypes.STRING,
+		allowNull: false,
+		primaryKey: true,
+	},
+	user_id: {
+		type: DataTypes.STRING,
+		allowNull: false,
+	},
+}, {
+	tableName: "session_info",
+	timestamps: false,
+});
+
+
+export const AllRecipesUsers = sequelize.define('AllRecipesUsers', {
+	// Model attributes are defined here
+	user_id: {
+		type: DataTypes.STRING,
+		primaryKey: true,
+		allowNull: false,
+	},
+}, {
+	tableName: "all_auth_recipe_users",
+	timestamps: false,
+});
+
 User.hasOne(UserMetaData, { foreignKey: "user_id"});
 
 
