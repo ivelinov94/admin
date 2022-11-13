@@ -13,15 +13,19 @@ interface User {
 
 
 class UserDto {
-	public static toLocalUser(users: any[]): User[] {
+	public static toLocalUser(u: any) {
+		const { user_id, phone_number, time_joined, UserMetaDatum: meta = null} = u.dataValues;
+		return {
+			user_id,
+			phone_number,
+			time_joined: +time_joined,
+			metadata: meta ? JSON.parse(meta.user_metadata) : null,
+		}
+	}
+
+	public static toLocalUsers(users: any[]): User[] {
 		return users.map((u: any) => {
-			const { user_id, phone_number, time_joined, UserMetaDatum: meta = null} = u.dataValues;
-			return {
-				user_id,
-				phone_number,
-				time_joined: +time_joined,
-				metadata: meta ? JSON.parse(meta.user_metadata) : null,
-			}
+			return UserDto.toLocalUser(u);
 		})
 	}
 }

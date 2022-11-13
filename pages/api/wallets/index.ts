@@ -5,6 +5,11 @@ import { User, UserMetaData } from "../../../modules/User";
 import UserDto from "../../../modules/UserDto";
 
 async function listRoute(req: NextApiRequest, res: NextApiResponse) {
+	if(req?.method !== "GET") {
+		res.status(404).send({});
+		return;
+	}
+
 	const { phone = null } = req.query as { phone?: string };
 
 	const searchWhere = !phone ? undefined : {
