@@ -5,10 +5,12 @@ import { User, UserMetaData } from "../../../modules/User";
 import UserDto from "../../../modules/UserDto";
 
 async function listRoute(req: NextApiRequest, res: NextApiResponse) {
-	const { phone = null } = req.query;
+	const { phone = null } = req.query as { phone?: string };
 
 	const searchWhere = !phone ? undefined : {
-		[Op.startsWith]: phone,
+		phone_number: {
+			[Op.like]: `%${phone.trim().replace("+", "")}%`,
+		}
 	};
 
 	const users = await User.findAll({ include: UserMetaData, where: searchWhere });
