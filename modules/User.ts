@@ -1,5 +1,6 @@
 import { Sequelize, DataTypes } from "sequelize";
 
+// Yep, I know its bad, but thats it. Supertokens doesnt allow/have good User administrating (at the point of writing this comment)
 const sequelize = new Sequelize('postgresql://postgres:postgres@localhost:5430/postgres');
 
 export const User = sequelize.define('User', {
