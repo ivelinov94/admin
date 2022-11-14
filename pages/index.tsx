@@ -2,8 +2,6 @@ import { Typography } from '@mui/material';
 import type { GetServerSidePropsContext, NextPage } from 'next'
 import Layout from '../components/Layout';
 import { withSessionSsr } from '../lib/withSession';
-import { User, UserMetaData } from '../modules/User';
-import UserDto from '../modules/UserDto';
 import { setAuthState, setAuthUser } from '../store/authSlice';
 import { AppStore, wrapper } from '../store/store';
 
@@ -22,7 +20,6 @@ const getProps = async (context: GetServerSidePropsContext, store: AppStore) => 
 	store.dispatch(setAuthUser(user || undefined));
 	store.dispatch(setAuthState(!!user));
 
-	const users = await User.findAll({ include: UserMetaData });
 
 	if(!user) {
 		return {
@@ -36,7 +33,6 @@ const getProps = async (context: GetServerSidePropsContext, store: AppStore) => 
 	return {
 		props: {
 			user,
-			users: UserDto.toLocalUser(users)
 		},
 	};
 }
