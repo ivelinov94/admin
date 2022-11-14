@@ -6,7 +6,26 @@ import Image from "next/image";
 import fetchJson, { FetchError } from '../../lib/fetchJson';
 import useUser, { User } from '../../lib/useUser';
 import { withSessionSsr } from "../../lib/withSession";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { object, string, TypeOf } from 'zod';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+const loginSchema = object({
+	username: string()
+		.min(1, 'Username is required'),
+	password: string()
+		.min(1, 'Password is required'),
+
+});
+
+const otpSchema = object({
+	code: string()
+		.min(1, 'Verification code is required'),
+});
+
+type LoginInput = TypeOf<typeof loginSchema>;
+type OtpInput = TypeOf<typeof otpSchema>;
 
 const Login: NextPage = () => {
 	// here we just check if user is already logged in and redirect to profile
@@ -17,13 +36,39 @@ const Login: NextPage = () => {
 
 	const [errorMsg, setErrorMsg] = useState("");
 	const [isGenerated, setIsGenerated] = useState(false);
+	const [userData, setUserData] = useState<any>();
 
-	const handleGenerate = async (event: any) => {
-		const body = {
-			username: event.currentTarget.username.value,
-			password: event.currentTarget.password.value,
-		};
+	const {
+		register,
+		formState: { errors, isSubmitSuccessful },
+		reset,
+		handleSubmit,
+	} = useForm<LoginInput>({
+		resolver: zodResolver(loginSchema),
+	});
 
+	const {
+		register: registerOtp,
+		formState: { errors: errorsOtp, isSubmitSuccessful: isSubmitSuccessfulOtp },
+		reset: resetOtp,
+		handleSubmit: handleSubmitOtp,
+	} = useForm<OtpInput>({
+		resolver: zodResolver(otpSchema),
+	});
+
+	useEffect(() => {
+		if (isSubmitSuccessful) {
+			reset();
+		}
+	}, [isSubmitSuccessful, reset]);
+
+	useEffect(() => {
+		if (isSubmitSuccessfulOtp) {
+			resetOtp();
+		}
+	}, [isSubmitSuccessfulOtp, resetOtp]);
+
+	const handleGenerate = async (body: any) => {
 		fetchJson("/api/auth/generate", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
@@ -36,13 +81,7 @@ const Login: NextPage = () => {
 		});
 	}
 
-	const handleSubmit = async (event: any) => {
-		const body = {
-			username: event.currentTarget.username.value,
-			password: event.currentTarget.password.value,
-			code: event.currentTarget.code.value,
-		};
-
+	const handleLogin = async (body: any) => {
 		try {
 			const user = fetchJson<User>("/api/auth/login", {
 				method: "POST",
@@ -65,15 +104,21 @@ const Login: NextPage = () => {
 		}
 	}
 
+	const onSubmitHandler: SubmitHandler<LoginInput> = (values) => {
+		const body = {
+			username: values.username,
+			password: values.password,
+		};
+		setUserData(body);
+		handleGenerate(body);
+	};
 
-	const onSubmit = async (event: any) => {
-		event.preventDefault();
-
-		if(isGenerated) {
-			return handleSubmit(event);
-		}
-
-		return handleGenerate(event);
+	const onSubmitHandlerOtp: SubmitHandler<OtpInput> = (values) => {
+		const body = {
+			...userData,
+			code: values.code,
+		};
+		handleLogin(body);
 	};
 
 	return (
@@ -93,15 +138,22 @@ const Login: NextPage = () => {
 								</Box>
 							)
 						}
-						<form onSubmit={onSubmit}>
+						<Box
+							component='form'
+							noValidate
+							autoComplete='off'
+							onSubmit={handleSubmit(onSubmitHandler)}
+						>
 							<Box marginBottom="20px">
 								<TextField
 									required
 									label="Username"
 									placeholder="Enter your username"
 									fullWidth={true}
-									name="username"
+									error={!!errors['username']}
+									helperText={errors['username'] ? errors['username'].message : ''}
 									disabled={isGenerated}
+									{...register('username')}
 								/>
 							</Box>
 							<Box marginBottom="20px">
@@ -111,27 +163,38 @@ const Login: NextPage = () => {
 									placeholder="Enter your password"
 									fullWidth={true}
 									type="password"
-									name="password"
+									error={!!errors['password']}
+									helperText={errors['password'] ? errors['password'].message : ''}
+									{...register('password')}
 									disabled={isGenerated}
 								/>
 							</Box>
 							<Box marginBottom="40px">
 								<Button variant="contained" type="submit" disabled={isGenerated}>Send code by SMS</Button>
 							</Box>
+						</Box>
+						<Box
+							component='form'
+							noValidate
+							autoComplete='off'
+							onSubmit={handleSubmitOtp(onSubmitHandlerOtp)}
+						>
 							<Box marginBottom="20px">
 								<TextField
 									required
 									label="Verification Code"
 									placeholder="Enter the code  you got by SMS"
-									name="code"
+									error={!!errorsOtp['code']}
+									helperText={errorsOtp['code'] ? errorsOtp['code'].message : ''}
+									{...registerOtp('code')}
 									fullWidth={true}
 									disabled={!isGenerated}
 								/>
 							</Box>
 							<Box marginBottom="20px">
-								<Button variant="contained" type="submit"  disabled={!isGenerated}>Login</Button>
+								<Button variant="contained" type="submit" disabled={!isGenerated}>Login</Button>
 							</Box>
-						</form>
+						</Box>
 					</Box>
 
 					<Box flex="1">
@@ -147,7 +210,7 @@ const getProps = (context: GetServerSidePropsContext) => {
 	const { req } = context;
 	const user = req.session?.user || null;
 
-	if(user) {
+	if (user) {
 		return {
 			redirect: {
 				permanent: false,

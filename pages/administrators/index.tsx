@@ -2,6 +2,7 @@ import { User as Administrator } from '.prisma/client';
 import { Button, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import type { GetServerSidePropsContext, NextPage } from 'next'
 import { useEffect } from 'react';
+import Router from "next/router";
 import Layout from '../../components/Layout';
 import fetchJson from '../../lib/fetchJson';
 import { User } from '../../lib/useUser';
@@ -21,7 +22,11 @@ const Administrators: NextPage<Props> = (props: Props) => {
 	return (
 		<Layout>
 			<Typography>Administrators</Typography>
-			<Button color="success" variant="contained">Add New</Button>
+			<Button color="success" variant="contained" onClick={() => {
+				Router.push("/administrators/add");
+			}}>
+				Add New
+			</Button>
 			<TableContainer component={Paper}>
 				<Table sx={{ minWidth: 650 }} aria-label="simple table">
 					<TableHead>
@@ -72,7 +77,7 @@ const getProps = async (context: GetServerSidePropsContext, store: AppStore) => 
 	store.dispatch(setAuthState(!!user));
 
 
-	if(!user) {
+	if (!user) {
 		return {
 			redirect: {
 				permanent: false,
