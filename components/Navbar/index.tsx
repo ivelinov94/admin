@@ -6,7 +6,7 @@ import MenuIcon from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser, selectAuthUser } from "../../store/authSlice";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import fetchJson from "../../lib/fetchJson";
 import { selectUiSidebarOpen } from "../../store/uiSlice";
 
@@ -16,6 +16,10 @@ const settings = [
 	{
 		label: "Profile",
 		action: null,
+	},
+	{
+		label: "Change password",
+		action: "Password",
 	},
 	{
 		label: "Logout",
@@ -80,12 +84,18 @@ const Navbar = (props: Props) => {
 
 	const handleCloseUserMenu = async (e: typeof settings[0]) => {
 		setAnchorElUser(null);
-		if(e.action === "Logout") {
-			dispatch(logoutUser());
-			await fetchJson("/api/auth/logout").then(() => {
-				console.log(`user logged out`);
-			})
-			return router.replace("/login");
+		switch (e.action) {
+			case "Logout":
+				dispatch(logoutUser());
+				await fetchJson("/api/auth/logout").then(() => {
+					console.log(`user logged out`);
+				})
+				return router.replace("/login");
+			case "Password":
+				Router.push("/change_password");
+				break;
+			default:
+				break;
 		}
 	};
 
@@ -94,8 +104,8 @@ const Navbar = (props: Props) => {
 			<Toolbar >
 				<Box display="flex" alignItems="center">
 					<Image src="/images/logo.svg" width="50" height="50" />
-					<Box width="20px"/>
-					<Image src="/images/logo_text.svg" width="200" height="24" style={{ marginLeft: "10px"}}/>
+					<Box width="20px" />
+					<Image src="/images/logo_text.svg" width="200" height="24" style={{ marginLeft: "10px" }} />
 				</Box>
 
 				<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -106,8 +116,8 @@ const Navbar = (props: Props) => {
 						<Box sx={{ flexGrow: 0 }}>
 							<Tooltip title="Open settings">
 								<Box onClick={handleOpenUserMenu}>
-									<IconButton  sx={{ p: 0, marginRight: "10px" }}>
-										<Avatar alt={user.username} sx={{ textTransform: "uppercase"}}>{user.username.slice(0, 1)}</Avatar>
+									<IconButton sx={{ p: 0, marginRight: "10px" }}>
+										<Avatar alt={user.username} sx={{ textTransform: "uppercase" }}>{user.username.slice(0, 1)}</Avatar>
 									</IconButton>
 									{user.username}
 								</Box>
