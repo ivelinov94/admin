@@ -58,11 +58,11 @@ const CreateAdministrator: NextPage = () => {
 		}
 	}
 
-	const onSubmitHandler: SubmitHandler<AdministratorInput> = (values) => {
+	const onSubmitHandler: SubmitHandler<AdministratorInput> = async (values) => {
 		const body = {
 			...values
 		};
-		handleCreate(body);
+		await handleCreate(body);
 	};
 
 	return (

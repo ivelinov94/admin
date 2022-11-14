@@ -113,12 +113,12 @@ const Login: NextPage = () => {
 		handleGenerate(body);
 	};
 
-	const onSubmitHandlerOtp: SubmitHandler<OtpInput> = (values) => {
+	const onSubmitHandlerOtp: SubmitHandler<OtpInput> = async (values) => {
 		const body = {
 			...userData,
 			code: values.code,
 		};
-		handleLogin(body);
+		await handleLogin(body);
 	};
 
 	return (

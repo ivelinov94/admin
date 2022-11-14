@@ -69,7 +69,9 @@ const Administrators: NextPage<Props> = (props: Props) => {
 								<TableCell align="right">{row.name}</TableCell>
 								<TableCell align="right">{row.createdAt.toString()}</TableCell>
 								<TableCell align="right">
-									<IconButton color="warning" aria-label="edit">
+									<IconButton color="warning" aria-label="edit" onClick={() => {
+										Router.push(`/administrators/update?id=${row.id}`);
+									}}>
 										<EditIcon />
 									</IconButton>
 									<IconButton color="error" aria-label="delete" onClick={async () => {
