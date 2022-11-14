@@ -1,5 +1,6 @@
 import { Alert, Box, Button, TextField, Typography } from '@mui/material';
 import type { NextPage } from 'next'
+import Router from "next/router";
 import Layout from '../../components/Layout';
 import { object, string, TypeOf } from 'zod';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -46,6 +47,7 @@ const CreateAdministrator: NextPage = () => {
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(body),
 			});
+			Router.push("/administrators");
 		} catch (error) {
 			setErrorMsg("An error occured");
 			if (error instanceof FetchError) {

@@ -1,10 +1,10 @@
 import { User as Administrator } from '.prisma/client';
 import { Button, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import type { GetServerSidePropsContext, NextPage } from 'next'
-import { useEffect } from 'react';
+import { useState } from 'react';
 import Router from "next/router";
 import Layout from '../../components/Layout';
-import fetchJson from '../../lib/fetchJson';
+import fetchJson, { FetchError } from '../../lib/fetchJson';
 import { User } from '../../lib/useUser';
 import { withSessionSsr } from '../../lib/withSession';
 import { setAuthState, setAuthUser } from '../../store/authSlice';
@@ -18,7 +18,23 @@ type Props = {
 }
 
 const Administrators: NextPage<Props> = (props: Props) => {
-	const { administrators } = props;
+	const [administrators, setAdministrators] = useState<Administrator[]>(props.administrators);
+
+	const handleDelete = async (administrator: any) => {
+		try {
+			await fetchJson(`api/administrators/delete/${administrator.id}`, {
+				method: "DELETE",
+				headers: { "Content-Type": "application/json" }
+			});
+		} catch (error) {
+			if (error instanceof FetchError) {
+				console.log(error);
+			} else {
+				console.error("An unexpected error happened:", error);
+			}
+		}
+	}
+
 	return (
 		<Layout>
 			<Typography>Administrators</Typography>
@@ -56,7 +72,13 @@ const Administrators: NextPage<Props> = (props: Props) => {
 									<IconButton color="warning" aria-label="edit">
 										<EditIcon />
 									</IconButton>
-									<IconButton color="error" aria-label="delete">
+									<IconButton color="error" aria-label="delete" onClick={async () => {
+										const filteredArray = administrators.filter((administrator) => {
+											return administrator.id !== row.id;
+										});
+										await handleDelete(row);
+										setAdministrators(filteredArray);
+									}}>
 										<DeleteIcon />
 									</IconButton>
 								</TableCell>
