@@ -1,9 +1,10 @@
 import { User as Administrator } from '.prisma/client';
 import { Button, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import type { GetServerSidePropsContext, NextPage } from 'next'
-import { useEffect } from 'react';
+import { useState } from 'react';
+import Router from "next/router";
 import Layout from '../../components/Layout';
-import fetchJson from '../../lib/fetchJson';
+import fetchJson, { FetchError } from '../../lib/fetchJson';
 import { User } from '../../lib/useUser';
 import { withSessionSsr } from '../../lib/withSession';
 import { setAuthState, setAuthUser } from '../../store/authSlice';
@@ -17,11 +18,31 @@ type Props = {
 }
 
 const Administrators: NextPage<Props> = (props: Props) => {
-	const { administrators } = props;
+	const [administrators, setAdministrators] = useState<Administrator[]>(props.administrators);
+
+	const handleDelete = async (administrator: any) => {
+		try {
+			await fetchJson(`api/administrators/delete/${administrator.id}`, {
+				method: "DELETE",
+				headers: { "Content-Type": "application/json" }
+			});
+		} catch (error) {
+			if (error instanceof FetchError) {
+				console.log(error);
+			} else {
+				console.error("An unexpected error happened:", error);
+			}
+		}
+	}
+
 	return (
 		<Layout>
 			<Typography>Administrators</Typography>
-			<Button color="success" variant="contained">Add New</Button>
+			<Button color="success" variant="contained" onClick={() => {
+				Router.push("/administrators/add");
+			}}>
+				Add New
+			</Button>
 			<TableContainer component={Paper}>
 				<Table sx={{ minWidth: 650 }} aria-label="simple table">
 					<TableHead>
@@ -48,10 +69,18 @@ const Administrators: NextPage<Props> = (props: Props) => {
 								<TableCell align="right">{row.name}</TableCell>
 								<TableCell align="right">{row.createdAt.toString()}</TableCell>
 								<TableCell align="right">
-									<IconButton color="warning" aria-label="edit">
+									<IconButton color="warning" aria-label="edit" onClick={() => {
+										Router.push(`/administrators/update?id=${row.id}`);
+									}}>
 										<EditIcon />
 									</IconButton>
-									<IconButton color="error" aria-label="delete">
+									<IconButton color="error" aria-label="delete" onClick={async () => {
+										const filteredArray = administrators.filter((administrator) => {
+											return administrator.id !== row.id;
+										});
+										await handleDelete(row);
+										setAdministrators(filteredArray);
+									}}>
 										<DeleteIcon />
 									</IconButton>
 								</TableCell>
@@ -72,7 +101,7 @@ const getProps = async (context: GetServerSidePropsContext, store: AppStore) => 
 	store.dispatch(setAuthState(!!user));
 
 
-	if(!user) {
+	if (!user) {
 		return {
 			redirect: {
 				permanent: false,
