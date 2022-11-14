@@ -1,6 +1,6 @@
 
 import { Alert, Box, Button, Container, TextField, Typography } from '@mui/material'
-import type { GetServerSidePropsContext, NextApiRequest, NextPage } from 'next'
+import type { GetServerSidePropsContext, NextPage } from 'next'
 import Navbar from '../../components/Navbar'
 import Image from "next/image";
 import fetchJson, { FetchError } from '../../lib/fetchJson';
