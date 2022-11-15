@@ -86,11 +86,7 @@ const Navbar = (props: Props) => {
 		setAnchorElUser(null);
 		switch (e.action) {
 			case "Logout":
-				dispatch(logoutUser());
-				await fetchJson("/api/auth/logout").then(() => {
-					console.log(`user logged out`);
-				})
-				return router.replace("/login");
+				Router.push("/logout");
 			case "Password":
 				Router.push("/change_password");
 				break;
