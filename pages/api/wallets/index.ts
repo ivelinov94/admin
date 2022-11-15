@@ -1,8 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { Op } from "sequelize";
 import { withSessionRoute } from "../../../lib/withSession";
-import { User, UserMetaData } from "../../../modules/User";
-import UserDto from "../../../modules/UserDto";
+// import { User, UserMetaData } from "../../../modules/User";
+// import UserDto from "../../../modules/UserDto";
+import { users } from "./mock"
 
 async function listRoute(req: NextApiRequest, res: NextApiResponse) {
 	if(req?.method !== "GET") {
@@ -18,10 +19,11 @@ async function listRoute(req: NextApiRequest, res: NextApiResponse) {
 		}
 	};
 
-	const users = await User.findAll({ include: UserMetaData, where: searchWhere });
+	// const users = await User.findAll({ include: UserMetaData, where: searchWhere });
 
 	res.status(200).send({
-		data: UserDto.toLocalUser(users),
+		// data: UserDto.toLocalUsers(users),
+		users
 	});
 }
 
