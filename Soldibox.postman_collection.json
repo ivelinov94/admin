@@ -2244,6 +2244,226 @@
 									"response": []
 								}
 							]
+						},
+						{
+							"name": "Wallets",
+							"item": [
+								{
+									"name": "List wallets",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/wallets",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"wallets"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "List wallets",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "http://localhost:3000/api/wallets",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3000",
+													"path": [
+														"api",
+														"wallets"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "ETag",
+													"value": "\"11csx4qyrpqn2\""
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "830"
+												},
+												{
+													"key": "Vary",
+													"value": "Accept-Encoding"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 15 Nov 2022 07:23:31 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": [\n        {\n            \"user_id\": \"c99bc62a-cc5d-433e-a846-0a5dda2bdae8\",\n            \"phone_number\": \"+359898643635\",\n            \"time_joined\": 1666683412969,\n            \"metadata\": {\n                \"active\": true,\n                \"signature\": \"asdasdsdj12b12jhbjwdbj\",\n                \"verified\": true\n            }\n        },\n        {\n            \"user_id\": \"05738cf6-2f39-43c1-8879-be7753d338a4\",\n            \"phone_number\": \"+359898643633\",\n            \"time_joined\": 1667653761652,\n            \"metadata\": null\n        },\n        {\n            \"user_id\": \"23e967ac-bcee-441a-9b77-b96412f1bfbd\",\n            \"phone_number\": \"+359898643631\",\n            \"time_joined\": 1667654730677,\n            \"metadata\": null\n        },\n        {\n            \"user_id\": \"e293aa29-518f-4dc9-b99f-e3b7441cfabd\",\n            \"phone_number\": \"+359898643630\",\n            \"time_joined\": 1667656059457,\n            \"metadata\": null\n        },\n        {\n            \"user_id\": \"b74b6c95-ca62-4de9-9199-c98927164349\",\n            \"phone_number\": \"+359898643632\",\n            \"time_joined\": 1667654157312,\n            \"metadata\": null\n        },\n        {\n            \"user_id\": \"e27a1717-e5d6-4117-b727-9496ac9c6deb\",\n            \"phone_number\": \"+359898643634\",\n            \"time_joined\": 1666683709854,\n            \"metadata\": null\n        }\n    ]\n}"
+										}
+									]
+								},
+								{
+									"name": "Search Wallets",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/api/wallets?phone=+359898643633",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"wallets"
+											],
+											"query": [
+												{
+													"key": "phone",
+													"value": "+359898643633"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Wallet Keys by User",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/api/wallets/c99bc62a-cc5d-433e-a846-0a5dda2bdae8",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"wallets",
+												"c99bc62a-cc5d-433e-a846-0a5dda2bdae8"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Get Wallet Keys by User",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:3000/api/wallets/c99bc62a-cc5d-433e-a846-0a5dda2bdae8",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3000",
+													"path": [
+														"api",
+														"wallets",
+														"c99bc62a-cc5d-433e-a846-0a5dda2bdae8"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "ETag",
+													"value": "\"pecuo9hkgz16j\""
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Vary",
+													"value": "Accept-Encoding"
+												},
+												{
+													"key": "Content-Encoding",
+													"value": "gzip"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 15 Nov 2022 07:32:24 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"user\": {\n        \"user_id\": \"c99bc62a-cc5d-433e-a846-0a5dda2bdae8\",\n        \"phone_number\": \"+359898643635\",\n        \"time_joined\": 1666683412969,\n        \"metadata\": {\n            \"active\": true,\n            \"signature\": \"asdasdsdj12b12jhbjwdbj\",\n            \"verified\": true\n        }\n    },\n    \"devices\": [\n        {\n            \"id\": 1,\n            \"userId\": \"c99bc62a-cc5d-433e-a846-0a5dda2bdae8\",\n            \"deviceId\": \"1234\",\n            \"keyId\": \"28df971e-ce35-4304-b20d-5e7d45e08fe7\",\n            \"publicKey\": \"-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArUHZt1CWqSLvCATiqGVNIAmUQfs8DwIKbRqXqMGAQg0vlCeOmMuxpgkvWrT3RdYaUsGIyQrVR3gongJXFNrrYY8JteQkWYiitF9g28+WlSYgE72OFbQRQlQ5UXlRVh/txN7wQyY0bNAlzqcKRTzHm3AwhlyMv72Wl6/uDjGFQCbwMgxUIqMTdE9lOX7ndi6ck+Xm+FgMIRmYS5O7T75AwebiTQkzl86XsRkc+KLDaf6kyqEZe7fnpV1Ab0IRlrAgCfViRWdBJj5Pq1q3Q+vgx7eOGUn1AWoK/qb01mbhS3CT9q2pwbqcQRziunz2yMTlDz8w29SYz7h91mfhnDv8RwIDAQAB\\n-----END PUBLIC KEY-----\",\n            \"createdAt\": \"2022-10-27T13:06:07.605Z\",\n            \"updatedAt\": \"2022-11-05T11:15:57.388Z\"\n        },\n        {\n            \"id\": 2,\n            \"userId\": \"c99bc62a-cc5d-433e-a846-0a5dda2bdae8\",\n            \"deviceId\": \"123\",\n            \"keyId\": \"28df971e-ce35-4304-b20d-5e7d45e08fe7\",\n            \"publicKey\": \"-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArUHZt1CWqSLvCATiqGVNIAmUQfs8DwIKbRqXqMGAQg0vlCeOmMuxpgkvWrT3RdYaUsGIyQrVR3gongJXFNrrYY8JteQkWYiitF9g28+WlSYgE72OFbQRQlQ5UXlRVh/txN7wQyY0bNAlzqcKRTzHm3AwhlyMv72Wl6/uDjGFQCbwMgxUIqMTdE9lOX7ndi6ck+Xm+FgMIRmYS5O7T75AwebiTQkzl86XsRkc+KLDaf6kyqEZe7fnpV1Ab0IRlrAgCfViRWdBJj5Pq1q3Q+vgx7eOGUn1AWoK/qb01mbhS3CT9q2pwbqcQRziunz2yMTlDz8w29SYz7h91mfhnDv8RwIDAQAB\\n-----END PUBLIC KEY-----\",\n            \"createdAt\": \"2022-10-27T13:06:07.605Z\",\n            \"updatedAt\": \"2022-11-05T11:15:57.388Z\"\n        }\n    ]\n}"
+										}
+									]
+								},
+								{
+									"name": "Get Wallet Keys by User Copy",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/api/wallets/delete/a23be71e-c4b8-4ba2-93f6-925938b78e1e",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"wallets",
+												"delete",
+												"a23be71e-c4b8-4ba2-93f6-925938b78e1e"
+											]
+										}
+									},
+									"response": []
+								}
+							]
 						}
 					]
 				}
