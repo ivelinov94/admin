@@ -70,19 +70,23 @@ const Administrators: NextPage<Props> = (props: Props) => {
 								<TableCell align="right">{row.createdAt.toString()}</TableCell>
 								<TableCell align="right">
 									<IconButton color="warning" aria-label="edit" onClick={() => {
-										Router.push(`/administrators/update?id=${row.id}`);
+										Router.push(`/administrators/update/${row.id}`);
 									}}>
 										<EditIcon />
 									</IconButton>
-									<IconButton color="error" aria-label="delete" onClick={async () => {
-										const filteredArray = administrators.filter((administrator) => {
-											return administrator.id !== row.id;
-										});
-										await handleDelete(row);
-										setAdministrators(filteredArray);
-									}}>
-										<DeleteIcon />
-									</IconButton>
+									{
+										row.id !== props.user.id && (
+											<IconButton color="error" aria-label="delete" onClick={async () => {
+												const filteredArray = administrators.filter((administrator) => {
+													return administrator.id !== row.id;
+												});
+												await handleDelete(row);
+												setAdministrators(filteredArray);
+											}}>
+												<DeleteIcon />
+											</IconButton>
+										)
+									}
 								</TableCell>
 							</TableRow>
 						))}

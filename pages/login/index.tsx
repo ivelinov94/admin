@@ -40,8 +40,7 @@ const Login: NextPage = () => {
 
 	const {
 		register,
-		formState: { errors, isSubmitSuccessful },
-		reset,
+		formState: { errors },
 		handleSubmit,
 	} = useForm<LoginInput>({
 		resolver: zodResolver(loginSchema),
@@ -55,12 +54,6 @@ const Login: NextPage = () => {
 	} = useForm<OtpInput>({
 		resolver: zodResolver(otpSchema),
 	});
-
-	useEffect(() => {
-		if (isSubmitSuccessful) {
-			reset();
-		}
-	}, [isSubmitSuccessful, reset]);
 
 	useEffect(() => {
 		if (isSubmitSuccessfulOtp) {
