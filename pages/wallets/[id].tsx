@@ -1,7 +1,8 @@
 import { Box, CardMedia, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import { User } from '@prisma/client';
 import type { GetServerSidePropsContext, NextPage } from 'next'
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import { useEffect, useState } from 'react';
 import Layout from '../../components/Layout';
 import fetchJson from '../../lib/fetchJson';
@@ -28,9 +29,14 @@ const Wallet: NextPage = () => {
 
     return (
         <Layout>
+            <KeyboardArrowLeftIcon cursor="pointer" onClick={() => {
+                Router.push("/wallets");
+            }} />
             <Typography variant="h6" marginBottom="20px">Wallet</Typography>
-            <Typography marginBottom="20px">User id: {wallet?.user?.user_id}</Typography>
-            <Typography marginBottom="20px">Phone: {wallet?.user?.phone_number}</Typography>
+            <Box display="flex">
+                <Typography marginBottom="20px" marginRight="20px">User id: {wallet?.user?.user_id}</Typography>
+                <Typography marginBottom="20px">Phone number: {wallet?.user?.phone_number}</Typography>
+            </Box>
             <Box marginBottom="20px">
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
