@@ -2,6 +2,7 @@ import { User } from "@prisma/client";
 import otp from "otp-generator";
 import prisma from "../../../../lib/Prisma";
 import Twilio from "twilio";
+import { shouldForwardProp } from "@mui/styled-engine";
 
 interface Input {
 	user: User;
@@ -28,6 +29,12 @@ interface SendOtpInput {
 
 export async function sendOtp(input: SendOtpInput) {
 	const { env } = process;
+	const shouldSend = env["SMS_ENABLED"] || 0;
+
+	if(!shouldSend) {
+		return;
+	}
+
 	const accountSid = env["TWILIO_ACCOUNT_SID"];
 	const authToken = env["TWILIO_AUTH_TOKEN"];
 
