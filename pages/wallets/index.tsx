@@ -1,4 +1,5 @@
 import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
+import ZoomInIcon from '@mui/icons-material/ZoomIn';
 import type { GetServerSidePropsContext, NextPage } from 'next'
 import Router from "next/router";
 import { useState } from 'react';
@@ -17,20 +18,20 @@ type Props = {
 }
 
 const Wallets: NextPage<Props> = (props: Props) => {
-	const [wallets, setWallets] = useState<any[]>(props.wallets.users);
+	const [wallets, setWallets] = useState<any[]>(props.wallets.data);
 
 
 	const handleSearch = async (event: any) => {
 		event.preventDefault();
 		const searchTerm = event.target.value;
-		const filteredWallets = await fetchJson<{ users: any }>(`http://localhost:3000/api/wallets?phone=${searchTerm}`, {
+		const filteredWallets = await fetchJson<{ data: any }>(`http://localhost:3000/api/wallets?phone=${searchTerm}`, {
 			method: "GET",
 			headers: { "Content-Type": "application/json" },
 		});
-		filteredWallets.users.forEach((user: any) => {
+		filteredWallets.data.forEach((user: any) => {
 			user.time_joined = new Date(user.time_joined).toDateString();
 		});
-		setWallets(filteredWallets.users);
+		setWallets(filteredWallets.data);
 	};
 
 	const debouncedHandleSearch = debounce(handleSearch, 300);
@@ -54,6 +55,7 @@ const Wallets: NextPage<Props> = (props: Props) => {
 							<TableCell>Time Joined</TableCell>
 							<TableCell>Active</TableCell>
 							<TableCell>Verified</TableCell>
+							<TableCell>Action</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
@@ -61,15 +63,17 @@ const Wallets: NextPage<Props> = (props: Props) => {
 							<TableRow
 								style={{ cursor: 'pointer' }}
 								key={row.id}
-								onClick={() => {
-									Router.push(`/wallets/${row.user_id}`);
-								}}
 							>
 								<TableCell>{row.user_id}</TableCell>
 								<TableCell>{row.phone_number}</TableCell>
 								<TableCell>{row.time_joined.toString()}</TableCell>
 								<TableCell>{row.metadata ? `${row.metadata.active}` : 'false'}</TableCell>
 								<TableCell>{row.metadata ? `${row.metadata.verified}` : 'false'}</TableCell>
+								<TableCell>
+									<ZoomInIcon onClick={() => {
+										Router.push(`/wallets/${row.user_id}`);
+									}} />
+								</TableCell>
 							</TableRow>
 						))}
 					</TableBody>
@@ -95,12 +99,12 @@ const getProps = async (context: GetServerSidePropsContext, store: AppStore) => 
 		}
 	}
 
-	const data = await fetchJson<{ users: any }>("http://localhost:3000/api/wallets", {
+	const data = await fetchJson<{ data: any }>("http://localhost:3000/api/wallets", {
 		method: "GET",
 		headers: { "Content-Type": "application/json" },
 	});
 
-	data.users.forEach((user: any) => {
+	data.data.forEach((user: any) => {
 		user.time_joined = new Date(user.time_joined).toDateString();
 	});
 
