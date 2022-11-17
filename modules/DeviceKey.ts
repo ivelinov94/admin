@@ -1,7 +1,11 @@
 import { Sequelize, DataTypes } from "sequelize";
 
 // Yep, I know its bad, but thats it. Supertokens doesnt allow/have good User administrating (at the point of writing this comment)
-const sequelize = new Sequelize('postgresql://postgres:postgres@localhost:5431/postgres');
+const url = process.env.CRYPTO_DATABASE_URL;
+if(!url) {
+	throw new Error("Undefined database")
+}
+const sequelize = new Sequelize(url);
 
 export const DeviceKey = sequelize.define('DeviceKey', {
 	// Model attributes are defined here

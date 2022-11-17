@@ -1,7 +1,11 @@
 import { Sequelize, DataTypes } from "sequelize";
 
 // Yep, I know its bad, but thats it. Supertokens doesnt allow/have good User administrating (at the point of writing this comment)
-const sequelize = new Sequelize('postgresql://postgres:postgres@localhost:5430/postgres');
+const url = process.env.SUPERTOKENS_DATABASE_URL;
+if(!url) {
+	throw new Error("Undefined database")
+}
+const sequelize = new Sequelize(url);
 
 export const User = sequelize.define('User', {
 	// Model attributes are defined here

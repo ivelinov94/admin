@@ -1,5 +1,6 @@
 
 import { NextApiRequest, NextApiResponse } from "next";
+import { withSessionRoute } from "../../../lib/withSession";
 import Administrator from "../../../modules/Administrator";
 
 async function indexRoute(_req: NextApiRequest, res: NextApiResponse) {
@@ -14,4 +15,4 @@ async function indexRoute(_req: NextApiRequest, res: NextApiResponse) {
 	});
 };
 
-export default indexRoute;
+export default withSessionRoute(indexRoute);

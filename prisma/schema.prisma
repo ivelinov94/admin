@@ -24,7 +24,7 @@ model Confirmation {
   userId    Int
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
-  user      User     @relation(fields: [userId], references: [id])
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([code, userId])
   @@index([userId])

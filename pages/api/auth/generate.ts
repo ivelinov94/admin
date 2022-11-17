@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { withSessionRoute } from "../../../lib/withSession";
 import Hash from "../../../utils/Hash";
 import login from "./helpers/Login";
-import generateOtp from "./helpers/Otp";
+import generateOtp, { sendOtp } from "./helpers/Otp";
 
 async function generateRoute(req: NextApiRequest, res: NextApiResponse) {
 	const { username, password } = req.body;
@@ -29,7 +29,11 @@ async function generateRoute(req: NextApiRequest, res: NextApiResponse) {
 
 		generateOtp({
 			user
+		}).then((res) => {
+			const { code } = res;
+			sendOtp({ code, user });
 		});
+
 
 		res.send({
 			status: "ok",
