@@ -37,8 +37,8 @@ const Administrators: NextPage<Props> = (props: Props) => {
 
 	return (
 		<Layout>
-			<Typography>Administrators</Typography>
-			<Button color="success" variant="contained" onClick={() => {
+			<Typography marginBottom="20px">Administrators</Typography>
+			<Button style={{ marginBottom: 20 }} color="success" variant="contained" onClick={() => {
 				Router.push("/administrators/add");
 			}}>
 				Add New
