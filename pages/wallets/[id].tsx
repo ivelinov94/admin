@@ -62,7 +62,9 @@ const Wallet: NextPage = () => {
                 </TableContainer>
             </Box>
             <Typography marginBottom="20px">Signature</Typography>
-            <CardMedia component='img' src={`data:image/png;base64, ${wallet?.user?.metadata?.signature}`} />
+            <Box width={400} height={400}>
+                <CardMedia component='img' src={`${wallet?.user?.metadata?.signature}`} />
+            </Box>
         </Layout>
     )
 }

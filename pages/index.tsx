@@ -18,6 +18,8 @@ import {
 	Tooltip,
 	Legend,
 } from 'chart.js';
+import fetchJson from '../lib/fetchJson';
+import { User } from '../lib/useUser';
 
 ChartJS.register(
 	CategoryScale,
@@ -29,7 +31,13 @@ ChartJS.register(
 	Legend
 );
 
-const Home: NextPage = () => {
+type Props = {
+	data: any,
+	user: User;
+}
+
+const Home: NextPage<Props> = (props: Props) => {
+	const { data } = props.data;
 	const optionsMonth = {
 		responsive: true,
 		maintainAspectRatio: false,
@@ -52,7 +60,7 @@ const Home: NextPage = () => {
 		datasets: [
 			{
 				label: 'Transactions for November',
-				data: [7000, 10000, 8500, 11000],
+				data: data.transactionsLastMonth,
 				borderColor: 'rgb(75, 192, 192)',
 				segment: {
 					borderColor: (ctx: any) => ctx.p0.parsed.y > ctx.p1.parsed.y ? 'rgb(192,75,75)' : undefined,
@@ -83,7 +91,7 @@ const Home: NextPage = () => {
 		datasets: [
 			{
 				label: 'Transactions for 2022',
-				data: [30000, 40000, 50000, 42000, 48000, 46000, 49000, 53000, 55000, 52000, 54000, 56000],
+				data: data.transactionsLastYear,
 				borderColor: 'rgb(75, 192, 192)',
 				segment: {
 					borderColor: (ctx: any) => ctx.p0.parsed.y > ctx.p1.parsed.y ? 'rgb(192,75,75)' : undefined,
@@ -104,7 +112,7 @@ const Home: NextPage = () => {
 						<Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 							<PeopleAltIcon />
 							<Typography variant='h6' marginLeft="10px">
-								1234
+								{data.totalUsers}
 							</Typography>
 						</Box>
 					</Box>
@@ -117,7 +125,7 @@ const Home: NextPage = () => {
 						<Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 							<PersonAddIcon />
 							<Typography variant='h6' marginLeft="10px">
-								1234
+								{data.usersLastMonth}
 							</Typography>
 						</Box>
 					</Box>
@@ -130,7 +138,7 @@ const Home: NextPage = () => {
 						<Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 							<AttachMoneyIcon />
 							<Typography variant='h6'>
-								1234
+								{data.totalTransactions}
 							</Typography>
 						</Box>
 					</Box>
@@ -143,7 +151,7 @@ const Home: NextPage = () => {
 						<Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 							<AttachMoneyIcon />
 							<Typography variant='h6'>
-								1234
+								{data.totalTransactionsLastMonth}
 							</Typography>
 						</Box>
 					</Box>
@@ -182,9 +190,15 @@ const getProps = async (context: GetServerSidePropsContext, store: AppStore) => 
 		}
 	}
 
+	const data = await fetchJson<{ data: any }>("http://localhost:3000/api/dashboard", {
+		method: "GET",
+		headers: { "Content-Type": "application/json" },
+	});
+
 	return {
 		props: {
 			user,
+			data
 		},
 	};
 }

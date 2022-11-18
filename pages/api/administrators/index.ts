@@ -4,7 +4,7 @@ import { withSessionRoute } from "../../../lib/withSession";
 import Administrator from "../../../modules/Administrator";
 
 async function indexRoute(_req: NextApiRequest, res: NextApiResponse) {
-	if(_req.method !== "GET") {
+	if (_req.method !== "GET") {
 		return res.status(404).json({});
 	}
 

@@ -61,7 +61,6 @@ const Wallets: NextPage<Props> = (props: Props) => {
 					<TableBody>
 						{wallets?.map((row) => (
 							<TableRow
-								style={{ cursor: 'pointer' }}
 								key={row.id}
 							>
 								<TableCell>{row.user_id}</TableCell>
@@ -70,7 +69,7 @@ const Wallets: NextPage<Props> = (props: Props) => {
 								<TableCell>{row.metadata ? `${row.metadata.active}` : 'false'}</TableCell>
 								<TableCell>{row.metadata ? `${row.metadata.verified}` : 'false'}</TableCell>
 								<TableCell>
-									<ZoomInIcon onClick={() => {
+									<ZoomInIcon style={{ cursor: 'pointer' }} onClick={() => {
 										Router.push(`/wallets/${row.user_id}`);
 									}} />
 								</TableCell>
